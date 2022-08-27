@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand" href="index.html">Input Internal</a>
+            <a class="navbar-brand" href="#">Input Internal</a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -119,8 +119,8 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
-                                    <label for="date" style="font-size: 12px;">Tanggal : </label>
-                                    <input type="date" id="date" name="date" size="20"><br>
+                                    <label for="rencanakirim" style="font-size: 12px;">Rencana Kirim : </label>
+                                    <input type="date" id="rencanakirim" name="rencanakirim" size="20"><br>
                                     <label for="nopol" style="font-size: 12px;">Nopol :</label>
                                     <input type="text" name="nopol" size="20"><br>
                                     <label for="namasupir" style="font-size: 12px;">Nama Supir :</label>
@@ -168,8 +168,6 @@
                                 </td>
                             </tr>
                         </table>
-                        <br>
-
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -188,11 +186,10 @@
                                     <td><a href="list_rencana_kirim.html">Detail</a></td>
                                 </tr>
                             </table>
-                            <br>
                             <!-- <div class="card-body"> -->
                                 <div class="table-responsive">
                                     <label for="uangsaku" style="font-size: 14px;">Uang Saku :</label>
-                                    <input type="number" id="uangsaku" name="uangsaku"><br>
+                                    <input type="number" id="uangsaku" name="uangsaku" step="1000"><br>
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" height="1%">
                                     <label for="keterangan" style="font-size: 14px;">Keterangan :</label>
                                     </table>
