@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>History Inspeksi</title>
+        <title>Jumlah Stok</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand" href="#">History Inspeksi</a>
+            <a class="navbar-brand" href="#">Jumlah Stok</a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -76,7 +76,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="pur_task.htmli">Task</a>
+                                    <a class="nav-link" href="pur_task.html">Task</a>
                                     <a class="nav-link" href="pur_history.html">History</a>
                                 </nav>
                             </div>
@@ -106,83 +106,35 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
-                                    <label for="penerimaan" style="font-size: 12px;">Tanggal Penerimaan: </label>
-                                    <input type="text" id="penerimaan" name="penerimaan" size="20"><br>
-                                    <label for="tglInspeksi" style="font-size: 12px;">Tanggal Inspeksi:</label>
-                                    <input type="text" name="tglInspeksi" size="20"><br>
-                                    <label for="namakapal" style="font-size: 12px;">Nama kapal :</label>
-                                    <input type="text" name="namakapal" size="20"><br>
-                                    <label for="lokasibongkar" style="font-size: 12px;">Lokasi Bongkar:</label>
-                                    <input type="text" name="lokasibongkar" size="20"><br>
-                                </td>
-                                <td>
-                                    <label for="noinspeksi" style="font-size: 12px;">No Inspeksi :</label>
-                                    <input type="text" name="noinspeksi" size="20"><br>
-                                    <label for="nocontainer" style="font-size: 12px;">No Container : </label>
-                                    <input type="text" id="nocontainer" size="20"><br>
-                                    <label for="tglkplsandar" style="font-size: 12px;">Tanggal Kapal Sandar :</label>
-                                    <input type="date" name="namakapal" size="20"><br>
-                                    <label for="tglbukacontainer" style="font-size: 12px;">Tanggal Buka Container : </label>
-                                    <input type="date" name="tglbukacontainer" size="20"><br>
+                                    <label for="coy" style="font-size: 12px;">COY :</label>
+                                    <input type="text" name="coy" size="20"><br>
+                                    <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
+                                    <input type="text" name="lokasi" size="20"><br>
                                 </td>
                             </tr>
                         </table>
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <tr>
-                                    <th rowspan="2">no</th>
-                                    <th rowspan="2">Nama Barang</th>
-                                    <th rowspan="2">Merk</th>
-                                    <th rowspan="2">QTY Picklist</th>
-                                    <th colspan="6">Hasil Cek Dimensi</th>
-                                    <th colspan="3">QTY Realita</th>
-                                    <th rowspan="2">Total QTY</th>
-                                    <th>Grade</th>
-                                    <th colspan="2">Kesimpulan</th>
-                                    <th rowspan="2">Keterangan</th>
-                                </tr>
-                                <tr>
-                                    <td>panjang</td>
-                                    <td>lebar</td>
-                                    <td>tebal</td>
-                                    <td>tinggi</td>
-                                    <td>OD</td>
-                                    <td>Berat(Kg)</td>
-                                    <td>Utuh</td>
-                                    <td>Rusak</td>
-                                    <td>Kurang</td>
-                                    <td>A/B/C</td>
-                                    <td>Passed</td>
-                                    <td>Failed</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Pipa Kotak 40x40x2x6000mm</td>
-                                    <td>Test</td>
-                                    <td>100 btg</td>
-                                    <td>3.9</td>
-                                    <td>3.3</td>
-                                    <td>1.9</td>
-                                    <td>12</td>
-                                    <td>1</td>
-                                    <td>100kg</td>
-                                    <td>&#x2611;</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>10</td>
-                                    <td>A</td>
-                                    <td>&#x2611;</td>
-                                    <td></td>
-                                    <td>Barang Antik</td>
+                                <th>Item ID</th>
+                                <th>Nama Item</th>
+                                <th>Grade</th>
+                                <th>Jumlah</th>
+                                <th>Satuan</th>
+                                <th>tgl CSO</th>
+                                <th>Action</th>
+                                <tr style="height:20px">
+                                    <td>hai</td>
+                                    <td>halo</td>
+                                    <td>lo</td>
+                                    <td>alo</td>
+                                    <td>halo</td>
+                                    <td>aaa</td>
+                                    <td><a href="https://www.youtube.com" target="_blank">YT player</a></td>
                                 </tr>
                             </table>
-                            *OD = Diameter Luar
-                        </div>
-                    </div>
-                </div>
-                                    <input type="submit" value="submit">
-                                    <input type="reset">
+                            <a href="index.html"><button>Back</button></a>
+
             </main>
             </div>
             </div>
