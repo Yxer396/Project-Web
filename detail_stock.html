@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Jumlah Stok</title>
+        <title>Inspeksi Gantung</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -14,7 +14,8 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand" href="#">Jumlah Stok</a>
+            <a class="navbar-brand" href="#">Inspeksi Gantung
+            </a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -69,14 +70,14 @@
                                     <a class="nav-link" href="list_rencana_kirim.html">List Rencana Kirim</a>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 PUR  
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="pur_task.html">Task</a>
+                                    <a class="nav-link" href="pur_task.htmli">Task</a>
                                     <a class="nav-link" href="pur_history.html">History</a>
                                 </nav>
                             </div>
@@ -100,59 +101,75 @@
             </div>
         <div id="layoutSidenav_content">
             <main>
-                <!-- <div class="card mb-4"> -->
+                <!-- <div class="card-header">
+                </div> -->
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <th>Item ID </th>
+                            <th>Nama Item</th>
+                            <th>Kategori</th>
+                            <th>merk/Type</th>
+                            <th>Grade</th>
+                            <th>Jumlah</th>
+                            <th>Satuan</th>
+                            <th>tgl CSO</th>
+                            <tr style="height:10px">
+                                <td>1</td>
+                                <td>hai</td>
+                                <td>hai</td>
+                                <td>halo</td>
+                                <td>lo</td>
+                                <td>ui</td>
+                                <td>iu</td>
+                                <td><a href="detail_inspeksi_gantung.html" target="_self">Inspeksi</a></td>
+                            </tr>
                             <tr>
-                                <td>
-                                    <label for="coy" style="font-size: 12px;">COY :</label>
-                                    <input type="text" name="coy" size="20"><br>
-                                    <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
-                                    <input type="text" name="lokasi" size="20"><br>
-                                </td>
-                                <td>
-                                    <label for="tgl_mulai" style="font-size: 12px;">Date Form : </label>
-                                    <input type="text" name="tgl_mulai" size="20"><br>
-                                    <label for="tgl_to" style="font-size: 12px;">To : </label>
-                                    <input type="text" name="tgl_to" size="20"><br>
-                                    <button>Search</button>
-                                </td>
+                                <td>Tiger Nixon</td>
+                                <td>System Architect</td>
+                                <td>Edinburgh</td>
+                                <td>61</td>
                             </tr>
                         </table>
-                        <!-- <div class="card-body"> -->
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <th>Item ID</th>
-                                <th>Nama Item</th>
-                                <th>Grade</th>
-                                <th>Jumlah</th>
-                                <th>Satuan</th>
-                                <th>tgl CSO</th>
-                                <th>Action</th>
-                                <tr style="height:20px">
-                                    <td>hai</td>
-                                    <td>halo</td>
-                                    <td>lo</td>
-                                    <td>alo</td>
-                                    <td>halo</td>
-                                    <td>aaa</td>
-                                    <td><a href="detail_stock.html">Detail</a></td>
-                                </tr>
-                            </table>
-                            <a href="index.html"><button>Back</button></a>
-
+                    </div>
+                    <a href="revisi_stock.html"><button>Revisi</button></a>
+                    <a href="jumlah_stock.html"><button>Back</button></a>
+                </div>
             </main>
             </div>
             </div>
-            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-            <script src="js/scripts.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-            <script src="assets/demo/chart-area-demo.js"></script>
-            <script src="assets/demo/chart-bar-demo.js"></script>
-            <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-            <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-            <script src="assets/demo/datatables-demo.js"></script>
+        </div>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a> &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/datatables-demo.js"></script>
 </body>
+<script>
+    var date = new Date();
+    var year = date.getfullYear();
+    var month = date.getMonth() + 1;
+    var todayDate = String(date.getDate()).padStart(2, '0');
+    var datePattern = year + '-' + month + '-' + todayDate;
+    document.getElementById("date").value = datePattern;
+    document.write(datePattern);
+</script>
+
 </html>
