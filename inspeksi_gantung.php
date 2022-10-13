@@ -47,6 +47,19 @@
                             <div class="sb-sidenav-menu-heading">Inspeksi</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Master 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link" href="master_company.php">Master Company</a>
+                                    <a class="nav-link" href="master_jenis_armada.php">Master Jenis Armada</a>
+                                    <a class="nav-link" href="master_jenis_bongkar_muat.php">Master Jenis Bongkar muat</a>
+                                    <a class="nav-link" href="master_lokasi.php">Master Lokasi</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Staff  
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -67,19 +80,19 @@
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="kepala_warehouse_task.php">Task</a>
                                     <a class="nav-link" href="input_internal.php">Muat Internal</a>
-                                    <a class="nav-link" href="bongkar_internal.html">Bongkar Internal</a>
-                                    <a class="nav-link" href="list_rencana_kirim.html">List Rencana Kirim</a>
+                                    <a class="nav-link" href="bongkar_internal.php">Bongkar Internal</a>
+                                    <a class="nav-link" href="list_rencana_kirim.php">List Rencana Kirim</a>
                                 </nav>
                             </div>
-                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 PUR  
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="pur_task.html">Task</a>
-                                    <a class="nav-link" href="pur_history.html">History</a>
+                                    <a class="nav-link" href="pur_task.php">Task</a>
+                                    <a class="nav-link" href="pur_history.php">History</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -89,7 +102,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="jumlah_stock.html">Jumlah Stok</a>
+                                    <a class="nav-link" href="jumlah_stock.php">Jumlah Stok</a>
                                 </nav>
                             </div>
                         </div>

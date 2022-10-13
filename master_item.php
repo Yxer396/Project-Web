@@ -1,3 +1,6 @@
+<?php
+    require 'function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Jumlah Stok</title>
+        <title>Master Item</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -14,7 +17,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand" href="#">Jumlah Stok</a>
+            <a class="navbar-brand" href="#">Master Company</a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -112,37 +115,79 @@
                     </div>
                 </nav>
             </div>
-        <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">
             <main>
-                <!-- <div class="card mb-4"> -->
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <tr>
-                                <td>
-                                    <label for="coy" style="font-size: 12px;">COY :</label>
-                                    <input type="text" name="coy" size="20"><br>
-                                    <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
-                                    <input type="text" name="lokasi" size="20"><br>
-                                </td>
-                                <td>
-                                    <label for="tgl_masuk" style="font-size: 12px;">Tanggal : </label>
-                                    <input type="text" name="tgl_masuk" size="20"><br>
-                                    <button>Search</button>
-                                </td>
-                            </tr>
-                        </table>
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Tambah Item
+            </button>
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+        
+            <!-- Modal body -->
+            <form method="post">
+            <div class="modal-body">
+            <input type = "text" name="itemcode" placeholder="Item Code" class="form-control" required>
+            <br>
+            <input type = "text" name="itemname" placeholder="Item Name" class="form-control" required>
+            <br>
+            <input type = "number" name="itemgroup" placeholder="Item Group" class="form-control" required>
+            <br>
+            <input type = "text" name="product" placeholder="Product" class="form-control" required>
+            <br>
+            <input type = "text" name="subproduct" placeholder="Sub Product" class="form-control" >
+            <br>                                                                            
+            <select name="grade">
+            <option>Select Grade</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            </select>
+            <br>
+            <br>
+            <input type="text" name="mainuom" placeholder="Main UOM" class="form-control" required>
+            <br>
+            <input type="text" name="secuom" placeholder="Sec UOM" class="form-control" >
+            <br>
+            <label> Is Cutting : </label>
+            <br>
+            <input type="radio" name="check" onclick="onlyOne(this)" value="yes" &nbsp> Yes
+            <input type="radio" name="check" onclick="onlyOne(this)" value="no">No
+            <br>
+            <br>
+            <input type="text" name="weight" placeholder="Weight" class="form-control" required>
+            <br>
+            <input type="text" name="tolerance" placeholder="Tolerance" class="form-control" required>
+            <br>
+            <input type="text" name="description" placeholder="description" class="form-control">
+            <br>
+            <button type="submit" class="btn btn-primary" name="addnewitem">Submit</button>
+            </div>
+            </form>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
                         <!-- <div class="card-body"> -->
-                        <form method ="post">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <th>Item ID</th>
-                                <th>Nama Item</th>
-                                <th>Grade</th>
-                                <th>Jumlah</th>
-                                <th>Satuan</th>
-                                <th>tgl CSS</th>
-                                <th>tgl CSO</th>
+                                <th>No </th>
+                                <th>Nomor SJ</th>
+                                <th>QTY</th>
+                                <th>Tonase (kg)</th>
+                                <th>Jumlah Item</th>
                                 <th>Action</th>
                                 <tr style="height:20px">
                                     <td>hai</td>
@@ -150,24 +195,15 @@
                                     <td>lo</td>
                                     <td>alo</td>
                                     <td>halo</td>
-                                    <?php
-                                    $today = getdate()
-                                    ?>
-                                    <td></td>
-                                    <td><a href="detail_stock.php">Detail</a></td>
-                                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    Css
-                                    </button></td>
-                                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    Cso
-                                    </button></td>
+                                    <td><a href="list_rencana_kirim.php">Detail</a></td>
                                 </tr>
                             </table>
-                            <a href="index.php"><button>Back</button></a>
-                        </div>
-                        </form> 
+
 
             </main>
+            </div>
+            </div>
+    
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
             <script src="js/scripts.js"></script>
@@ -178,4 +214,3 @@
             <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
             <script src="assets/demo/datatables-demo.js"></script>
 </body>
-</html>

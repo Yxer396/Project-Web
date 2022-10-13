@@ -46,6 +46,19 @@
                             <div class="sb-sidenav-menu-heading">Inspeksi</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Master 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link" href="master_company.php">Master Company</a>
+                                    <a class="nav-link" href="master_jenis_armada.php">Master Jenis Armada</a>
+                                    <a class="nav-link" href="master_jenis_bongkar_muat.php">Master Jenis Bongkar muat</a>
+                                    <a class="nav-link" href="master_lokasi.php">Master Lokasi</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Staff  
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -55,8 +68,8 @@
                                     <a class="nav-link" href="bongkar_eksternal.php">Bongkat Eksternal</a>
                                     <a class="nav-link" href="inspeksi_gantung.php">Inspeksi Gantung</a>
                                     <a class="nav-link" href="history_inspeksi.php">History Inspeksi</a>
-                                </nav>
-                            </div>
+                                 </nav>
+                                </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 KaWRH  
@@ -65,7 +78,8 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="kepala_warehouse_task.php">Task</a>
-                                    <a class="nav-link" href="input_internal.php">Input Internal</a>
+                                    <a class="nav-link" href="input_internal.php">Muat Internal</a>
+                                    <a class="nav-link" href="bongkar_internal.php">Bongkar Internal</a>
                                     <a class="nav-link" href="list_rencana_kirim.php">List Rencana Kirim</a>
                                 </nav>
                             </div>
@@ -87,7 +101,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="pur_history.php">Jumlah Stok</a>
+                                    <a class="nav-link" href="jumlah_stock.php">Jumlah Stok</a>
                                 </nav>
                             </div>
                         </div>

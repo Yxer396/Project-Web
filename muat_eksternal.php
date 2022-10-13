@@ -1,56 +1,9 @@
+<?php
+    require 'function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script language="javascript">
-         function addRow(tableID) {
-
-   var table = document.getElementById(tableID);
-   var rowCount = table.rows.length;
-   var row = table.insertRow(rowCount);
-
-   var cell1 = row.insertCell(0);
-   var element1 = document.createElement("input");
-   element1.type = "checkbox";
-   element1.name="chkbox[]";
-   cell1.appendChild(element1);
-
-   var cell2 = row.insertCell(1);
-   var element3 = document.createElement("input");
-   element3.type = "text";
-   element3.name = "txtbox[]";
-   cell2.appendChild(element3);
-
-
-   var cell3 = row.insertCell(2);
-   var element2 = document.createElement("input");
-   element2.type = "text";
-   element2.name = "txtbox[]";
-   cell3.appendChild(element2);
-
-  }
-
-  function deleteRow(tableID) {
-   try {
-   var table = document.getElementById(tableID);
-   var rowCount = table.rows.length;
-
-   for(var i=0; i<rowCount; i++) {
-    var row = table.rows[i];
-    var chkbox = row.cells[0].childNodes[0];
-    if(null != chkbox && true == chkbox.checked) {
-     table.deleteRow(i);
-     rowCount--;
-     i--;
-    }
-
-
-   }
-   }catch(e) {
-    alert(e);
-   }
-  }
-
- </script>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -96,15 +49,28 @@
                             <div class="sb-sidenav-menu-heading">Inspeksi</div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Master 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link" href="master_company.php">Master Company</a>
+                                    <a class="nav-link" href="master_jenis_armada.php">Master Jenis Armada</a>
+                                    <a class="nav-link" href="master_jenis_bongkar_muat.php">Master Jenis Bongkar muat</a>
+                                    <a class="nav-link" href="master_lokasi.php">Master Lokasi</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Staff  
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="muat_eksternal.html">Muat Eksternal</a>
-                                    <a class="nav-link" href="bongkar_eksternal.html">Bongkat Eksternal</a>
-                                    <a class="nav-link" href="inspeksi_gantung.html">Inspeksi Gantung</a>
-                                    <a class="nav-link" href="history_inspeksi.html">History Inspeksi</a>
+                                    <a class="nav-link" href="muat_eksternal.php">Muat Eksternal</a>
+                                    <a class="nav-link" href="bongkar_eksternal.php">Bongkat Eksternal</a>
+                                    <a class="nav-link" href="inspeksi_gantung.php">Inspeksi Gantung</a>
+                                    <a class="nav-link" href="history_inspeksi.php">History Inspeksi</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -114,10 +80,10 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="kepala_warehouse_task.html">Task</a>
-                                    <a class="nav-link" href="input_internal.html">Muat Internal</a>
-                                    <a class="nav-link" href="bongkar_internal.html">Bongkar Internal</a>
-                                    <a class="nav-link" href="list_rencana_kirim.html">List Rencana Kirim</a>
+                                    <a class="nav-link" href="kepala_warehouse_task.php">Task</a>
+                                    <a class="nav-link" href="input_internal.php">Muat Internal</a>
+                                    <a class="nav-link" href="bongkar_internal.php">Bongkar Internal</a>
+                                    <a class="nav-link" href="list_rencana_kirim.php">List Rencana Kirim</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -127,8 +93,8 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="pur_task.html">Task</a>
-                                    <a class="nav-link" href="pur_history.html">History</a>
+                                    <a class="nav-link" href="pur_task.php">Task</a>
+                                    <a class="nav-link" href="pur_history.php">History</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -138,7 +104,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="jumlah_stock.html">Jumlah Stok</a>
+                                    <a class="nav-link" href="jumlah_stock.php">Jumlah Stok</a>
                                 </nav>
                             </div>
                         </div>
@@ -154,6 +120,9 @@
                 <!-- <div class="card mb-4"> -->
                 <div class="card-body">
                     <div class="table-responsive">
+                        <button type="submit" class="btn btn-primary" name="btnmulai">Mulai</button>
+                        <button type="submit" class="btn btn-primary" name="btnselesai">Selesai</button>
+                        <form method = "post">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
@@ -163,33 +132,43 @@
                                     <input type="text" name="nopol" size="20"><br>
                                     <label for="namasupir" style="font-size: 12px;">Nama Supir :</label>
                                     <input type="text" name="namasupir" size="20"><br>
-                                    <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
-                                    <input list="lokasi">
-                                    <datalist id="lokasi">  
-                                            <option value="a">
-                                            <option value="b">
-                                            <option value="c">
-                                            <option value="d">
-                                            <option value="e">
-                                        </datalist><br>
+                                    <label for="lokasi" style="font-size: 12px;">Lokasi : </label>
+                                    <select name="coy">
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from master_company");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                    $takename = $fetcharray['company_name'];
+                                    $takeid = $fetcharray['id_company'];
+                                    ?>
+                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select><br>
                                     <label for="jenisarmada" style="font-size: 12px;">Jenis Armada :</label>
-                                    <input list="jenisarmada">
-                                    <datalist id="jenisarmada">
-                                            <option value="L300">
-                                            <option value="Fuso">    
-                                            <option value="Trailer">
-                                            <option value="Viar">
-                                            <option value="Colt D">
-                                            <option value="Box">
-                                            <option value="Container">
-                                            <option value="Motor">
-                                            <option value="Tronton">
-                                            <option value="Gandeng">
-                                            <option value="Mobil">
-                                            <option value="Becak">
-                                        </datalist>
+                                    <select name="armada">
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from jenis_armada");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                    $takejenis = $fetcharray['jenis_kendaraan'];
+                                    $takeidarmada = $fetcharray['id_armada'];
+                                    ?>
+                                    <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select>
                                 </td>
+                                <form method = "post">
                                 <td>
+                                    <label for="jumlahsj" style="font-size: 12px;">Jumlah SJ : </label>
+                                    <input type="text" id="jumlahsj" name="jumlahsj"><br>
+                                    <label for="tonase" style="font-size: 12px;">Tonase(Kg) : </label>
+                                    <input type="text" id="tonase" name="tonase"><br>
+                                    <label for="jumlahitem" style="font-size: 12px;">Jumlah Item : </label>
+                                    <input type="text" id="jumlahitem" name="jumlahitem"><br>   
                                     <label for="muat" style="font-size: 12px;">Durasi Muat : </label>
                                     <input type="text" id="muat" name="muat"><br>
                                     <label for="global" style="font-size: 12px;">Durasi Global : </label>
@@ -197,6 +176,7 @@
                                 </td>
                             </tr>
                         </table>
+                    </form>
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -206,15 +186,16 @@
                                 <th>Tonase (kg)</th>
                                 <th>Action</th>
                                 <tr>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><input type="text"></td>
-                                    <td><a href="https://www.youtube.com" target="_blank">YT player</a></td>
+                                    <td>1</td>
+                                    <td>SJ-001</td>
+                                    <td>10</td>
+                                    <td>20</td>
+                                    <td><a href="muat_eksternal.php" target="_blank">Cancel</a></td>
                                 </tr>
                             </table>
                             <!-- <div class="card-body"> -->
                             <div class="table-responsive">
+                                <form method = "post">
                                 <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
                                     <tr>
                                         <td>
@@ -241,10 +222,11 @@
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" height="1%">
                                     <label for="keterangan" style="font-size: 14px;">Keterangan :</label>
                                     </table>
-                                    <textarea name="keterangan" rows="3" cols="150" placeholder="Masukan Keterangan....."> </textarea>
+                                    <textarea name="keterangan" rows="3" cols="150" name ="keterangan" 
+                                    placeholder="Masukan Keterangan....."> </textarea>
                                     <br>
-                                    <input type="submit" value="Submit">
-                                    <input type="reset">
+                                    <button class="btn btn-primary" type="submit" name="" value="Submit">Submit</button>
+                                    <button class="btn btn-primary" type="" name="" value="reset">Reset</button>
 
 
             </main>
