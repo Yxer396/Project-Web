@@ -150,23 +150,92 @@
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <th>No </th>
-                                <th>Nomor SJ</th>
-                                <th>QTY</th>
-                                <th>Tonase (kg)</th>
-                                <th>Jumlah Item</th>
+                                <th>No</th>
+                                <th>ID Armada</th>
+                                <th>Jenis Kendaraan</th>
                                 <th>Action</th>
                                 <tr style="height:20px">
-                                    <td>hai</td>
-                                    <td>halo</td>
-                                    <td>lo</td>
-                                    <td>alo</td>
-                                    <td>halo</td>
-                                    <td><a href="list_rencana_kirim.php">Detail</a></td>
+                                <?php
+                                $ambilsemuadatajenisarmada = mysqli_query($conn,"select * from jenis_armada");
+                                $i = 1;
+                                while($data=mysqli_fetch_array($ambilsemuadatajenisarmada)){
+                                    $idarmada = $data['id_armada'];
+                                    $jeniskendaraan = $data['jenis_kendaraan'];
+                                ?>
+                                <tr>
+                                    <td><?=$i++;?></td>
+                                    <td><?=$idarmada?></td>
+                                    <td><?=$jeniskendaraan?></td>
+                                    <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$idarmada?>">
+                                    Edit
+                                    </button>
+                                    <input type="hidden" name="idjenisaramdayangmaudihapus" value="<?=$idarmada?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$idarmada?>">
+                                    Delete
+                                    </button>
+                                    </td>
                                 </tr>
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="Edit<?=$idarmada?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Edit</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                <input type = "text" name="jeniskendaraan" value="<?=$jeniskendaraan?>" class="form-control" required>
+                                <br>
+                                <input type = "hidden" name="idarmada" value = "<?=$idarmada?>">
+                                <button type="submit" class="btn btn-primary" name="updatejenisarmada">Submit</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                                
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="Delete<?=$idarmada?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                Apakah Anda ingin menghapus <?=$jeniskendaraan?>?
+                                <br>
+                                <br>
+                                <input type = "hidden" name="idarmada" value = "<?=$idarmada?>">
+                                <button type="submit" class="btn btn-danger" name="deletejenisarmada">Delete</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+                                <?php
+                                };
+                                ?>
                             </table>
-
-
             </main>
             </div>
             </div>
@@ -182,3 +251,4 @@
             <script src="assets/demo/datatables-demo.js"></script>
 </body>
 </html>
+

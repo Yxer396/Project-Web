@@ -148,7 +148,7 @@
                 
                 ?>
 
-                <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
+                <option value="<?=$takejenis;?>"><?=$takejenis;?></option>
                 <?php
                 }
                 ?>
@@ -165,7 +165,7 @@
                 
                 ?>
 
-                <option value="<?=$takeid;?>"><?=$takename;?></option>
+                <option value="<?=$takename;?>"><?=$takename;?></option>
                 <?php
                 }
                 ?>
@@ -182,7 +182,7 @@
                 
                 ?>
 
-                <option value="<?=$takeid;?>"><?=$takename;?></option>
+                <option value="<?=$takename;?>"><?=$takename;?></option>
                 <?php
                 }
                 ?>
@@ -196,7 +196,6 @@
             <!-- Modal footer -->
             <div class="modal-footer">
         </div>
-        
       </div>
     </div>
   </div>
@@ -204,17 +203,38 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <th>No </th>
-                                <th>ID</th>
-                                <th>Activity</th>
-                                <th>Action</th>
+                                <th>Nopol</th>
+                                <th>Jenis Kendaraan</th>
+                                <th>COY</th>
+                                <th>Pemilik </th>
+                                <th>Kapasitas(KG)</th>
+                                <th>Status</th>
                                 <tr style="height:20px">
-                                    <td>hai</td>
-                                    <td>halo</td>
-                                    <td>lo</td>
-                                    <td>alo</td>
-                                    <td>halo</td>
-                                    <td><a href="list_rencana_kirim.php">Detail</a></td>
+                                <?php
+                                $ambilsemuadataarmada = mysqli_query($conn,"select * from master_armada_internal");
+                                $i = 1;
+                                while($data = mysqli_fetch_array($ambilsemuadataarmada)){
+                                    $nomorarmada = $data['nomor_armada_internal'];
+                                    $nopol = $data['nopol'];
+                                    $jeniskendaraan  = $data['jenis_kendaraan'];
+                                    $coyname = $data['company_name'];
+                                    $idcoypemilik = $data['pemilik'];
+                                    $kapasitas = $data['kapasitas'];
+                                    $status  = $data['status'];
+                                ?>
+                                <tr>
+                                <td><?=$nomorarmada?></td>
+                                <td><?=$nopol?></td>
+                                <td><?=$jeniskendaraan?></td>
+                                <td><?=$coyname?></td>
+                                <td><?=$idcoypemilik?></td>
+                                <td><?=$kapasitas?></td>
+                                <td><?=$status?></td>
                                 </tr>
+                                <?php 
+                                }
+                                ?>
+                                
                             </table>
 
 

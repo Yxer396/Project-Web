@@ -154,16 +154,92 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <th>No </th>
                                 <th>ID</th>
-                                <th>Activity</th>
+                                <th>Activity</th>       
                                 <th>Action</th>
                                 <tr style="height:20px">
-                                    <td>hai</td>
-                                    <td>halo</td>
-                                    <td>lo</td>
-                                    <td>alo</td>
-                                    <td>halo</td>
-                                    <td><a href="list_rencana_kirim.php">Detail</a></td>
+                                <?php
+                                $ambilsemuadatajenisbongkarmuat = mysqli_query($conn,"select * from master_jenis_bongkar_muat");
+                                $i = 1;
+                                while($data=mysqli_fetch_array($ambilsemuadatajenisbongkarmuat)){
+                                    $id = $data['id'];
+                                    $activity = $data['activity'];
+                                    $nojenis = $data['no_jenis_bongkar_muat'];
+                                ?>
+                                <tr>
+                                    <td><?=$i++;?></td>
+                                    <td><?=$id?></td>
+                                    <td><?=$activity?></td>
+                                    <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$nojenis?>">
+                                    Edit
+                                    </button>
+                                    <input type="hidden" name="idjenisbongkarmuat" value="<?=$nojenis?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$nojenis?>">
+                                    Delete
+                                    </button>
+                                    </td>
                                 </tr>
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="Edit<?=$nojenis?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Edit</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                <input type = "text" name="id" value="<?=$id?>" class="form-control" required>
+                                <br>
+                                <input type = "text" name="activity" value="<?=$activity?>" class="form-control" required>
+                                <br>
+                                <input type = "hidden" name="nojenis" value = "<?=$nojenis?>">
+                                <button type="submit" class="btn btn-primary" name="updatejenisbongkarmuat">Submit</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="Delete<?=$nojenis?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                Apakah Anda ingin menghapus <?=$activity?>?
+                                <br>
+                                <br>
+                                <input type = "hidden" name="nojenis" value = "<?=$nojenis?>">
+                                <button type="submit" class="btn btn-danger" name="deletejenisbongkarmuat">Delete</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+                                <?php   
+                                };
+                                ?>   
+                                
                             </table>
 
 

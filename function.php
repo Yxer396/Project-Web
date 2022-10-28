@@ -16,6 +16,33 @@ if(isset($_POST['addnewarmada'])){
     }
 }
 
+//update jenis armada
+if(isset($_POST['updatejenisarmada'])){
+    $idarmada = $_POST['idarmada'];
+    $jeniskendaraan = $_POST['jeniskendaraan'];
+
+    $updatetotablejenisarmada = mysqli_query($conn,"update jenis_armada set jenis_kendaraan = '$jeniskendaraan' where id_armada ='$idarmada'");
+    if($updatetotablejenisarmada){
+        header('location:master_jenis_armada.php');
+    }else{
+        echo 'gagal';
+        header('location:master_jenis_armada.php');
+    }
+}
+
+//delete jenis armada
+if(isset($_POST['deletejenisarmada'])){
+    $idarmada = $_POST['idarmada'];
+
+    $deletetotablejenisarmada = mysqli_query($conn,"delete from jenis_armada where id_armada = '$idarmada'");
+    if($deletetotablejenisarmada){
+        header('location:master_jenis_armada.php');
+    }else{
+        echo 'gagal';
+        header('location:master_jenis_armada.php');
+    }
+}
+
 //add master jenis bongkar muat
 if(isset($_POST['addnewjenis'])){
     $idbongkarmuat = $_POST['idbongkarmuat'];
@@ -27,6 +54,35 @@ if(isset($_POST['addnewjenis'])){
         echo 'gagal';
     }
 }
+
+//update jenis bongkar muat
+if(isset($_POST['updatejenisbongkarmuat'])){
+    $nojenis = $_POST['nojenis'];
+    $idjenis = $_POST['id'];
+    $activity = $_POST['activity'];
+
+    $updatetotablejenis = mysqli_query($conn,"update master_jenis_bongkar_muat set id = '$idjenis', activity = '$activity' where no_jenis_bongkar_muat ='$nojenis'");
+    if($updatetotablejenis){
+        header('location:master_jenis_bongkar_muat.php');
+    }else{
+        echo 'gagal';
+        header('location:master_jenis_bongkar_muat.php');
+    }
+}
+
+//delete jenis bongkar muat
+if(isset($_POST['deletejenisbongkarmuat'])){
+    $nojenis = $_POST['nojenis'];
+
+    $deletetotablejenis = mysqli_query($conn,"delete from master_jenis_bongkar_muat where no_jenis_bongkar_muat = '$nojenis'");
+    if($deletetotablejenis){
+        header('location:master_jenis_bongkar_muat.php');
+    }else{
+        echo 'gagal';
+        header('location:master_jenis_bongkar_muat.php');
+    }
+}
+
 //add master company
 if(isset($_POST['addnewcompany'])){
     $companyname = $_POST['companyname'];
@@ -36,6 +92,33 @@ if(isset($_POST['addnewcompany'])){
         header('location:master_company.php');
     }else{
         echo 'gagal';
+    }
+}
+
+//update master company
+if(isset($_POST['updatecompany'])){
+    $idcompany = $_POST['idcoy'];
+    $companyname = $_POST['companyname'];
+
+    $updatetotablecompany = mysqli_query($conn,"update master_company set company_name = '$companyname' where id_company = '$idcompany'");
+    if($updatetotablecompany){
+        header('location:master_company.php');
+    }else{
+        echo 'gagal';
+        header('location:master_company.php');
+    }
+}
+
+//delete master company
+if(isset($_POST['deletecompany'])){
+    $idcompany = $_POST['idcoy'];
+
+    $deletetotablecompany = mysqli_query($conn,"delete from master_company where id_company = '$idcompany'");
+    if($deletetotablecompany){
+        header('location:master_company.php');
+    }else{
+        echo 'gagal';
+        header('location:master_company.php');
     }
 }
 
@@ -70,6 +153,9 @@ if(isset($_POST['addarmadainternal'])){
         echo 'gagal';
     }
 }
+
+//update armada internal
+
 
 //master item
 if(isset($_POST['addnewitem'])){

@@ -3,7 +3,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>d
+    <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -128,7 +128,7 @@
       
             <!-- Modal Header -->
             <div class="modal-header">
-          <h4 class="modal-title">Modal Heading</h4>
+          <h4 class="modal-title">Tambah Company</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
         
@@ -151,19 +151,94 @@
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <th>No </th>
-                                <th>Nomor SJ</th>
-                                <th>QTY</th>
-                                <th>Tonase (kg)</th>
-                                <th>Jumlah Item</th>
-                                <th>Action</th>
+                                <th>Id Company</th>
+                                <th>Company Name</th>
+                                <th>Action</th>           
                                 <tr style="height:20px">
-                                    <td>hai</td>
-                                        <td>halo</td>
-                                    <td>lo</td>
-                                    <td>alo</td>
-                                    <td>halo</td>
-                                    <td><a href="list_rencana_kirim.php">Detail</a></td>
+                                <?php
+                                $ambilsemuadatacoy = mysqli_query($conn,"select * from master_company");
+                                $i = 1;
+                                while($data=mysqli_fetch_array($ambilsemuadatacoy)){
+                                    $idcoy = $data['id_company'];
+                                    $coyname = $data['company_name'];
+
+                                ?>
+                                <tr>
+                                    <td><?=$i++;?></td>
+                                    <td><?=$idcoy?></td>
+                                    <td><?=$coyname?></td>
+                                    <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$idcoy?>">
+                                    Edit
+                                    </button>
+                                    <input type="hidden" name="idcoyyangmaudihapus" value="<?=$idcoy?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$idcoy?>">
+                                    Delete
+                                    </button>
+                                    </td>
                                 </tr>
+
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="Edit<?=$idcoy?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                            <h4 class="modal-title">Edit</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                <input type = "text" name="companyname" value="<?=$coyname?>" class="form-control" required>
+                                <br>
+                                <input type = "hidden" name="idcoy" value = "<?=$idcoy?>">
+                                <button type="submit" class="btn btn-primary" name="updatecompany">Submit</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="Delete<?=$idcoy?>">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                            <h4 class="modal-title">Delete</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                Apakah Anda ingin menghapus <?=$coyname?>?
+                                <br>
+                                <br>
+                                <input type = "hidden" name="idcoy" value = "<?=$idcoy?>">
+                                <button type="submit" class="btn btn-danger" name="deletecompany">Delete</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+
+
+                                <?php
+                                };
+                                ?>
                             </table>
 
 

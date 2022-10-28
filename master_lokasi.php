@@ -179,6 +179,7 @@
                         <div class="table-responsive">
                             <br>
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <th>Number</th>
                                 <th>COY </th>
                                 <th>Field 1</th>
                                 <th>Field 2</th>
@@ -188,15 +189,33 @@
                                 <th>Field 6</th>
                                 <th>Field 7</th>
                                 <tr style="height:20px">
-                                    <td>BAS</td>
-                                    <td>p1</td>
-                                    <td>p2</td>
-                                    <td>p3</td>
-                                    <td>p4</td>
-                                    <td>p5</td>
-                                    <td>p6</td>
-                                    <td>p7</td>
+                                <?php
+                                $ambilsemuadatalokasi = mysqli_query($conn,"select * from master_lokasi");
+                                $i=1;
+                                while($data=mysqli_fetch_array($ambilsemuadatalokasi)){
+                                    $idcoy = $data['id_company'];
+                                    $field1 = $data['field1'];
+                                    $field2 = $data['field2'];
+                                    $field3 = $data['field3'];
+                                    $field4 = $data['field4'];
+                                    $field5 = $data['field5'];
+                                    $field6 = $data['field6'];
+                                    $field7 = $data['field7'];
+                                ?>
+                                <tr>
+                                    <td><?=$i++;?></td>
+                                    <td><?=$idcoy?></td>
+                                    <td><?=$field1?></td>
+                                    <td><?=$field2?></td>
+                                    <td><?=$field3?></td>
+                                    <td><?=$field4?></td>
+                                    <td><?=$field5?></td>
+                                    <td><?=$field6?></td>
+                                    <td><?=$field7?></td>
                                 </tr>
+                                <?php
+                                };
+                                ?>
                             </table>
 
 

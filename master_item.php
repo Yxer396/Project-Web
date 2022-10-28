@@ -183,20 +183,66 @@
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <th>No </th>
-                                <th>Nomor SJ</th>
-                                <th>QTY</th>
-                                <th>Tonase (kg)</th>
-                                <th>Jumlah Item</th>
+                                <th>No</th>
+                                <th>Item Code</th>
+                                <th>Item Name</th>
+                                <th>Id Group Item</th>
+                                <th>Product</th>
+                                <th>Sub Product</th>
+                                <th>Grade</th>
+                                <th>Main UOM</th>
+                                <th>Second UOM</th>
+                                <th>Is Cutting</th>
+                                <th>Weight</th>
+                                <th>Tolerance</th>
+                                <th>Create Time</th>
+                                <th>Update Time</th>
+                                <th>Description</th>
+                                <th>Status</th>
                                 <th>Action</th>
                                 <tr style="height:20px">
-                                    <td>hai</td>
-                                    <td>halo</td>
-                                    <td>lo</td>
-                                    <td>alo</td>
-                                    <td>halo</td>
+                                <?php
+                                $ambilsemuadataitem = mysqli_query($conn,"select * from stock");
+                                $i = 1;
+                                while($data=mysqli_fetch_array($ambilsemuadataitem)){
+                                    $itemcode = $data['item_code'];
+                                    $itemname = $data['item_name'];
+                                    $iditemgroup = $data['id_item_group'];
+                                    $product = $data['product'];
+                                    $subproduct = $data['sub_product'];
+                                    $grade = $data['grade'];
+                                    $mainuom = $data['main_uom'];
+                                    $secuom = $data['sec_uom'];
+                                    $iscutting = $data['is_cutting'];
+                                    $weight = $data['weight'];
+                                    $tolerance = $data['tolerance'];
+                                    $createtime = $data['create_time'];
+                                    $updatetime = $data['update_time'];
+                                    $description = $data['description'];
+                                    $status = $data['status'];
+                                ?>
+                                <tr>
+                                    <td><?=$i++;?></td>
+                                    <td><?=$itemcode;?></td>
+                                    <td><?=$itemname;?></td>
+                                    <td><?=$iditemgroup;?></td>
+                                    <td><?=$product;?></td>
+                                    <td><?=$subproduct;?></td>
+                                    <td><?=$grade;?></td>
+                                    <td><?=$mainuom;?></td>
+                                    <td><?=$secuom;?></td>
+                                    <td><?=$iscutting;?></td>
+                                    <td><?=$weight;?></td>
+                                    <td><?=$tolerance;?></td>
+                                    <td><?=$createtime;?></td>
+                                    <td><?=$updatetime;?></td>
+                                    <td><?=$description;?></td>
+                                    <td><?=$status;?></td>
                                     <td><a href="list_rencana_kirim.php">Detail</a></td>
                                 </tr>
+                                <?php
+                                };
+                                ?>
                             </table>
 
 
@@ -214,3 +260,4 @@
             <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
             <script src="assets/demo/datatables-demo.js"></script>
 </body>
+</html>

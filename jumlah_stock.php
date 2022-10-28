@@ -1,3 +1,6 @@
+<?php
+    require 'function.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -117,13 +120,38 @@
                 <!-- <div class="card mb-4"> -->
                 <div class="card-body">
                     <div class="table-responsive">
+                        <form method = "post";>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
                                     <label for="coy" style="font-size: 12px;">COY :</label>
-                                    <input type="text" name="coy" size="20"><br>
+                                    <select name="coy">
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from master_company");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                    $takename = $fetcharray['company_name'];
+                                    $takeid = $fetcharray['id_company'];
+                                    ?>
+                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select><br>
                                     <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
-                                    <input type="text" name="lokasi" size="20"><br>
+                                    <select name="lokasi">
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select field1,field2,field3,field4,field5,field6,field7 from master_lokasi where id_company = ");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                    $takeid = $fetcharray['id_company'];
+                                    $takeidlok = $fetcharray['id_lokasi'];
+                                    ?>
+                                    <option value="<?=$fetcharray;?>"></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select><br>
                                 </td>
                                 <td>
                                     <label for="tgl_masuk" style="font-size: 12px;">Tanggal : </label>
@@ -132,6 +160,7 @@
                                 </td>
                             </tr>
                         </table>
+                                </form>
                         <!-- <div class="card-body"> -->
                         <form method ="post">
                         <div class="table-responsive">
@@ -153,12 +182,13 @@
                                     <?php
                                     $today = getdate()
                                     ?>
-                                    <td></td>
+                                    <td>1-1-2001</td>
+                                    <td>2-1-2002</td>
                                     <td><a href="detail_stock.php">Detail</a></td>
-                                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    <td><button type="button" class="btn btn-primary">
                                     Css
                                     </button></td>
-                                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                    <td><button type="button" class="btn btn-primary">
                                     Cso
                                     </button></td>
                                 </tr>
