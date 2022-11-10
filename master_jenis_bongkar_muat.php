@@ -144,7 +144,7 @@
             </form>
             <!-- Modal footer -->
             <div class="modal-footer">
-        </div>
+        </div~>
         
       </div>
     </div>

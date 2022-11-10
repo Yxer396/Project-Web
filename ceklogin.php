@@ -1,8 +1,35 @@
-<?php 
-if(isset($_SESSION['log'])){
+<?php
 
+//check username and pass
+
+require 'function.php';
+
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+//cek data
+$sql = "select * from user WHERE username='$username' ";
+$qry = mysqli_query($conn,$sql);
+$usr = mysqli_fetch_array($qry);
+
+if( 
+ md5($username) == md5($usr['username'])
+ AND
+ md5($password) == md5($usr['password'])
+  )
+{
+ $_SESSION['id_user']   = $usr['id_user'];
+ $_SESSION['username'] = $usr['username'];
+ $_SESSION['nama']     = $usr['nama'];
+ $_SESSION['level']    = $usr['level'];
+ $_SESSION['login']    = 1;
+ $pesan = "Login berhasil, selamat datang $username";
+} else {
+ $pesan = "Login gagal, username atau password anda salah!";
 }
-else{
-    header('location:login.php');  
-}
+
 ?>
+<script>
+ alert('<?php echo $pesan;?>');
+ location='index.php';
+</script>

@@ -1,32 +1,7 @@
 <?php
-require 'function.php';
-
-//check username and pass
-
-if(isset($_POST['login'])){
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    //check data di db
-    $cekdb = mysqli_query($conn,"SELECT * FROM user where username = '$username' and password = '$password'");
-    //hitung data
-    $hitung = mysqli_num_rows($cekdb);
-    if($hitung>0){
-        $_SESSION['log'] = 'True';
-        header('location:index.php');
-    }
-    else{
-        header('location:login.php');
-    };
-};
-
-if(!isset($_SESSION['log'])){
-
-}
-else{
-    header('location:index.php');  
-}
+    require 'ceklogin.php';
+    require 'function.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -59,7 +34,7 @@ else{
                                                 <input class="form-control py-4" name="password" id="inputPassword" type="password" placeholder="Enter password" />
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button class="btn btn-primary" name="login">Login</button>
+                                                <button class="btn btn-primary" name="login" value = "login">Login</button>
                                             </div>
                                         </form>
                                     </div>

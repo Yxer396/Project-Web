@@ -147,8 +147,7 @@
                     $takeidarmada = $fetcharray['id_armada'];
                 
                 ?>
-
-                <option value="<?=$takejenis;?>"><?=$takejenis;?></option>
+                <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
                 <?php
                 }
                 ?>
@@ -165,7 +164,7 @@
                 
                 ?>
 
-                <option value="<?=$takename;?>"><?=$takename;?></option>
+                <option value="<?=$takeid;?>"><?=$takename;?></option>
                 <?php
                 }
                 ?>
@@ -182,7 +181,7 @@
                 
                 ?>
 
-                <option value="<?=$takename;?>"><?=$takename;?></option>
+                <option value="<?=$takeid;?>"><?=$takename;?></option>
                 <?php
                 }
                 ?>
@@ -211,14 +210,18 @@
                                 <th>Status</th>
                                 <tr style="height:20px">
                                 <?php
-                                $ambilsemuadataarmada = mysqli_query($conn,"select * from master_armada_internal");
+                                $ambilsemuadataarmada = mysqli_query($conn,"select mai.nomor_armada_internal,mai.nopol,ja.jenis_kendaraan,mc2.company_name as companyName,mc1.company_name,mai.kapasitas,mai.status 
+                                from master_armada_internal mai 
+                                LEFT JOIN jenis_armada ja ON mai.jenis_kendaraan = ja.id_armada 
+                                left join master_company mc1 on mai.pemilik = mc1.id_company 
+                                left join master_company mc2 on mai.company_name = mc2.id_company");
                                 $i = 1;
                                 while($data = mysqli_fetch_array($ambilsemuadataarmada)){
                                     $nomorarmada = $data['nomor_armada_internal'];
                                     $nopol = $data['nopol'];
                                     $jeniskendaraan  = $data['jenis_kendaraan'];
-                                    $coyname = $data['company_name'];
-                                    $idcoypemilik = $data['pemilik'];
+                                    $coyname = $data['companyName'];
+                                    $idcoypemilik = $data['company_name'];
                                     $kapasitas = $data['kapasitas'];
                                     $status  = $data['status'];
                                 ?>

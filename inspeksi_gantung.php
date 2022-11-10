@@ -128,7 +128,7 @@
                                 <td>hai</td>
                                 <td>halo</td>
                                 <td>lo</td>
-                                <td><a href="detail_inspeksi_gantung.html" target="_self">Inspeksi</a></td>
+                                <td><a href="detail_inspeksi_gantung.php">Inspeksi</a></td>
                             </tr>
                             <tr>
                                 <td>Tiger Nixon</td>

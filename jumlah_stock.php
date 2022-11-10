@@ -141,7 +141,7 @@
                                     <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
                                     <select name="lokasi">
                                     <?php
-                                    $takealldata = mysqli_query($conn,"select field1,field2,field3,field4,field5,field6,field7 from master_lokasi where id_company = ");
+                                    $takealldata = mysqli_query($conn,"select field1,field2,field3,field4,field5,field6,field7 from master_lokasi ");
                                     while($fetcharray = mysqli_fetch_array($takealldata))
                                     {
                                     $takeid = $fetcharray['id_company'];
@@ -185,10 +185,10 @@
                                     <td>1-1-2001</td>
                                     <td>2-1-2002</td>
                                     <td><a href="detail_stock.php">Detail</a></td>
-                                    <td><button type="button" class="btn btn-primary">
+                                    <td><button type="button" class="btn btn-primary" name = "btncss">
                                     Css
                                     </button></td>
-                                    <td><button type="button" class="btn btn-primary">
+                                    <td><button type="button" class="btn btn-primary" name = "btncsos">
                                     Cso
                                     </button></td>
                                 </tr>

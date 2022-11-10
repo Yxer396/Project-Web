@@ -149,11 +149,11 @@
                                     <th rowspan="2">Nama Barang</th>
                                     <th rowspan="2">Merk</th>
                                     <th rowspan="2">QTY Picklist</th>
-                                    <th colspan="6">Hasil Cek Dimensi</th>
-                                    <th colspan="3">QTY Realita</th>
+                                    <th colspan="6" style="text-align:center;">Hasil Cek Dimensi</th>
+                                    <th colspan="3" style="text-align:center;">QTY Realita</th>
                                     <th rowspan="2">Total QTY</th>
                                     <th>Grade</th>
-                                    <th colspan="2">Kesimpulan</th>
+                                    <th colspan="2" style="text-align:center;">Kesimpulan</th>
                                     <th rowspan="2">Keterangan</th>
                                 </tr>
                                 <tr>

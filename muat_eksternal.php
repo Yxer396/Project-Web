@@ -120,18 +120,20 @@
                 <!-- <div class="card mb-4"> -->
                 <div class="card-body">
                     <div class="table-responsive">
+                        <form method = "post">
                         <button type="submit" class="btn btn-primary" name="btnmulai">Mulai</button>
                         <button type="submit" class="btn btn-primary" name="btnselesai">Selesai</button>
-                        <form method = "post">
+                        <!-- </form> -->
+                        <!-- <form method = "post"> -->
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
                                     <label for="date" style="font-size: 12px;">Tanggal : </label>
                                     <input type="date" id="date" name="date" size="20"><br>
                                     <label for="nopol" style="font-size: 12px;">Nopol :</label>
-                                    <input type="text" name="nopol" size="20"><br>
+                                    <input type="text" id="nopol" name="nopol" size="20"><br>
                                     <label for="namasupir" style="font-size: 12px;">Nama Supir :</label>
-                                    <input type="text" name="namasupir" size="20"><br>
+                                    <input type="text" id="namasupir" name="namasupir" size="20"><br>
                                     <label for="lokasi" style="font-size: 12px;">Lokasi : </label>
                                     <select name="coy">
                                     <?php
@@ -161,7 +163,6 @@
                                     ?>
                                     </select>
                                 </td>
-                                <form method = "post">
                                 <td>
                                     <label for="jumlahsj" style="font-size: 12px;">Jumlah SJ : </label>
                                     <input type="text" id="jumlahsj" name="jumlahsj"><br>
@@ -176,7 +177,7 @@
                                 </td>
                             </tr>
                         </table>
-                    </form>
+                    <!-- </form> -->
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -195,7 +196,7 @@
                             </table>
                             <!-- <div class="card-body"> -->
                             <div class="table-responsive">
-                                <form method = "post">
+                                <!-- <form method = "post"> -->
                                 <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
                                     <tr>
                                         <td>
@@ -218,17 +219,19 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <!-- </form> -->
                                 <div class="table-responsive">
+                                <!-- <form method = "post"> -->
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" height="1%">
                                     <label for="keterangan" style="font-size: 14px;">Keterangan :</label>
                                     </table>
                                     <textarea name="keterangan" rows="3" cols="150" name ="keterangan" 
                                     placeholder="Masukan Keterangan....."> </textarea>
                                     <br>
-                                    <button class="btn btn-primary" type="submit" name="" value="Submit">Submit</button>
+                                    <button class="btn btn-primary" type="submit" name="btnsubmit" value="Submit">Submit</button>
                                     <button class="btn btn-primary" type="" name="" value="reset">Reset</button>
 
-
+                                </form>
             </main>
             </div>
             </div>

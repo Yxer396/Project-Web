@@ -147,8 +147,8 @@ if(isset($_POST['addarmadainternal'])){
     $pemilik = $_POST['pemilik'];
     $kapasitas = $_POST['kapasitas'];
     $addtotablearmadainternal = mysqli_query($conn,"insert into master_armada_internal(nopol,jenis_kendaraan,company_name,pemilik,kapasitas) values('$nopol','$kendaraan','$namacoy','$pemilik','$kapasitas')");
-    if($addtotablelokasi){
-        header('location:master_lokasi.php');
+    if($addtotablearmadainternal){
+        header('location:master_armada_internal.php');
     }else{
         echo 'gagal';
     }
@@ -190,22 +190,35 @@ if(isset($_POST['btnmulai'])){
 }
 //header bongkar muat
 if(isset($_POST['btnsubmit'])){
-    $date = date('Y-m-d' ,strtotime($_POST['date']));
+    $date = date('Y-m-d');
     $nopolmuat = $_POST['nopol'];
-    $supir = $_POST['supir'];
+    $supir = $_POST['namasupir'];
     $lokasi = $_POST['coy'];
     $jenisarmadamuat = $_POST['armada'];
     $staff = $_POST['staff'];
     $operator = $_POST['operator'];
     $helper = $_POST['helper'];
     $keterangan = $_POST['keterangan'];
-    $addtotablemuateksternal = mysqli_query($conn,"insert into muat_eksternal(tanggal_muat,nopol,nama_supir,staff,operator,helper,keterangan) values('$date','$nopolmuat','$supir','$lokasi','$jenisarmadamuat','$staff','$operator','$helper','$keterangan')");  
+    $test="insert into muat_eksternal(tanggal_muat,nopol,nama_supir,coy,armada,staff,operator,helper,keterangan) values('$date','$nopolmuat','$supir','$lokasi','$jenisarmadamuat','$staff','$operator','$helper','$keterangan')";
+    mysqli_query($conn, $test); 
     if($addtotablemuateksternal){
      header('location:muat_eksternal.php');
  }  else{
      echo 'gagal';
  }
 }
+
+//button css
+if(isset($_POST['btncss'])){
+    $currentDate = new DateTime();
+    $adddate = mysqli_query($conn,"insert into waktu_stock(css) values('$currentdate')");
+    if($adddate){
+        header('location:jumlah_stock.php');
+    }  else{
+        echo 'gagal';
+    }
+}
+
 
 //onlyone checkbox
 /*function onlyOne(checkbox) {
