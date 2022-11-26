@@ -139,6 +139,28 @@ if(isset($_POST['addnewlokasi'])){
         echo 'gagal';
     }
 }
+
+//update master lokasi
+if(isset($_POST['updatelokasi'])){
+    $idcompany = $_POST['idlokasi'];
+    $companyname = $_POST['companyname'];
+    $namacoy = $_POST['coy'];
+    $lokasi1 = $_POST['fieldsatu'];
+    $lokasi2 = $_POST['fielddua'];
+    $lokasi3 = $_POST['fieldtiga'];
+    $lokasi4 = $_POST['fieldempat'];
+    $lokasi5 = $_POST['fieldlima'];
+    $lokasi6 = $_POST['fieldenam'];
+    $lokasi7 = $_POST['fieldtujuh'];
+    $updatetotablecompany = mysqli_query($conn,"update master_lokasi set id_company= '$namacoy', field1 = '$lokasi1', field2 = '$lokasi2', field3 = '$lokasi3', field4 = '$lokasi4', field5 = '$lokasi5', field6 = '$lokasi6', field7 = '$lokasi7' where id_lokasi = '$idlokasi'");
+    if($updatetotablecompany){
+        header('location:master_lokasi.php');
+    }else{
+        echo 'gagal';
+        header('location:master_lokasi.php');
+    }
+}
+
 //master armada internal
 if(isset($_POST['addarmadainternal'])){
     $nopol = $_POST['nopol'];
@@ -155,7 +177,33 @@ if(isset($_POST['addarmadainternal'])){
 }
 
 //update armada internal
+if(isset($_POST['updatearmadainternal'])){
+    $idarmadainternal = $_POST['noarmada'];
+    $nopol = $_POST['nopol'];
+    $kendaraan = $_POST['kendaraan'];
+    $namacoy = $_POST['coy'];
+    $pemilik = $_POST['pemilik'];
+    $kapasitas = $_POST['kapasitas'];
+    $updatetotablearmadadinternal = mysqli_query($conn,"update master_armada_internal set nopol = '$nopol', jenis_kendaraan = '$kendaraan', company_name = '$coy', pemilik = '$pemilik', kapasitas = '$kapasitas' where nomor_armada_internal ='$idarmadainternal'");
+    if($updatetotablearmadadinternal){
+        header('location:master_armada_internal.php');
+    }else{
+        echo 'gagal';
+        header('location:master_armada_internal.php');
+    }
+}
 
+//delete armada internal
+if(isset($_POST['deletearmadainternal'])){
+    $idarmadainternal = $_POST['noarmada'];
+    $deletetotablearmadainternal = mysqli_query($conn,"delete from master_armada_internal where nomor_armada_internal = '$idarmadainternal'");
+    if($deletetotablearmadainternal){
+        header('location:master_armada_internal.php');                                                                        
+    }else{
+        echo 'gagal';
+        header('location:master_armada_internal.php');
+    }
+}
 
 //master item
 if(isset($_POST['addnewitem'])){
@@ -178,6 +226,20 @@ if(isset($_POST['addnewitem'])){
         echo 'gagal';
     }
 }
+
+//master staff
+if(isset($_POST['addnewstaff'])){
+    $staffid = $_POST['idstaff'];
+    $staffname = $_POST['namastaff'];
+    $jabatan = $_POST['jabatan'];
+    $addtotablestaff = mysqli_query($conn,"insert into staff(id_staff,nama_staff,jabatan) values('$staffid','$staffname','$jabatan')");
+    if($addtotablestaff){
+        header('location:master_staff.php');
+    }else{
+        echo 'gagal';
+    }
+}
+
 //time add muat eksternal
 if(isset($_POST['btnmulai'])){
    $timemulai = $_POST['mulai'];
@@ -217,6 +279,12 @@ if(isset($_POST['btncss'])){
     }  else{
         echo 'gagal';
     }
+}
+
+//get date css 
+if(isset($_POST['btncss'])){
+    $currentDateTime = date('d-m-Y');
+    echo $currentDateTime;
 }
 
 

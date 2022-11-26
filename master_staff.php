@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Muat Eksternal</title>
+        <title>Master Company</title>
         <link href="css/styles.css" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -17,7 +17,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand" href="#">Muat Eksternal</a>
+            <a class="navbar-brand" href="#">Master Company</a>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -36,7 +36,7 @@
                         <a class="dropdown-item" href="#">Settings</a>
                         <a class="dropdown-item" href="#">Activity Log</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="login.php">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -115,128 +115,147 @@
                     </div>
                 </nav>
             </div>
-        <div id="layoutSidenav_content">
+            <div id="layoutSidenav_content">
             <main>
-                <!-- <div class="card mb-4"> -->
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <form method = "post">
-                        <button type="submit" class="btn btn-primary" name="btnmulai">Mulai</button>
-                        <button type="submit" class="btn btn-primary" name="btnselesai">Selesai</button>
-                        <button type="submit" class="btn btn-primary" name="btnlapor">Lapor</button>
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <tr>
-                                <td>
-                                    <label for="date" style="font-size: 12px;">Tanggal : </label>
-                                    <input type="date" id="date" name="date" size="20"><br>
-                                    <label for="nopol" style="font-size: 12px;">Nopol :</label>
-                                    <input type="text" id="nopol" name="nopol" size="20"><br>
-                                    <label for="namasupir" style="font-size: 12px;">Nama Supir :</label>
-                                    <input type="text" id="namasupir" name="namasupir" size="20"><br>
-                                    <label for="lokasi" style="font-size: 12px;">Lokasi : </label>
-                                    <select name="coy">
-                                    <?php
-                                    $takealldata = mysqli_query($conn,"select * from master_company");
-                                    while($fetcharray = mysqli_fetch_array($takealldata))
-                                    {
-                                    $takename = $fetcharray['company_name'];
-                                    $takeid = $fetcharray['id_company'];
-                                    ?>
-                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                    </select><br>
-                                    <label for="jenisarmada" style="font-size: 12px;">Jenis Armada :</label>
-                                    <select name="armada">
-                                    <?php
-                                    $takealldata = mysqli_query($conn,"select * from jenis_armada");
-                                    while($fetcharray = mysqli_fetch_array($takealldata))
-                                    {
-                                    $takejenis = $fetcharray['jenis_kendaraan'];
-                                    $takeidarmada = $fetcharray['id_armada'];
-                                    ?>
-                                    <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
-                                    <?php
-                                    }
-                                    ?>
-                                    </select>
-                                </td>
-                                <td>
-                                    <label for="jumlahsj" style="font-size: 12px;">Jumlah SJ : </label>
-                                    <input type="text" id="jumlahsj" name="jumlahsj"><br>
-                                    <label for="tonase" style="font-size: 12px;">Tonase(Kg) : </label>
-                                    <input type="text" id="tonase" name="tonase"><br>
-                                    <label for="jumlahitem" style="font-size: 12px;">Jumlah Item : </label>
-                                    <input type="text" id="jumlahitem" name="jumlahitem"><br>   
-                                    <label for="muat" style="font-size: 12px;">Durasi Muat : </label>
-                                    <input type="text" id="muat" name="muat"><br>
-                                    <label for="global" style="font-size: 12px;">Durasi Global : </label>
-                                    <input type="text" id="global" name="global"><br>
-                                </td>
-                            </tr>
-                        </table>
-                    <!-- </form> -->
+            <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                Tambah staff
+            </button>
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+          <h4 class="modal-title">Tambah staff</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+        
+            <!-- Modal body -->
+            <form method="post">
+            <div class="modal-body">
+            <input type = "text" name="idstaff" placeholder="Staff ID" class="form-control" required>
+            <br>
+            <input type = "text" name="namastaff" placeholder="Staff Name" class="form-control" required>
+            <br>
+            <input type = "text" name="jabatan" placeholder="Jabatan" class="form-control" required>
+            <br>
+            <button type="submit" class="btn btn-primary" name="addnewstaff">Submit</button>
+            </div>
+            </form>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+        </div>
+        
+      </div>
+    </div>
+  </div>
                         <!-- <div class="card-body"> -->
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <th>No </th>
-                                <th>Nomor SJ</th>
-                                <th>Nama Item</th>
-                                <th>QTY</th>
-                                <th>Tonase (kg)</th>
-                                <th>Action</th>
-                                <tr>
-                                    <td>1<td>
-                                    <td><input type="text" name="nomorsj" size="20" style="font-size: 12px;"></td>
-                                    <td><input type="text" name="namaitem" size="20" style="font-size: 12px;"></td>
-                                    <td><input type="text" name="qty" size="20" style="font-size: 12px;"></td>
-                                    <td><input type="text" name="tonase" size="20" style="font-size: 12px;"></td>
-                                    <td><button></button></td>
-                                    <td><a href="muat_eksternal.php" target="_blank">Cancel</a></td>
-                                </tr>
-                            </table>
-                            <!-- <div class="card-body"> -->
-                            <div class="table-responsive">
-                                <!-- <form method = "post"> -->
-                                <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
-                                    <tr>
-                                        <td>
-                                            <h6 style="text-align: center;">Team</h6>
-                                            <label for="staff" style="font-size: 12px;">Staff :</label>
-                                            <input type="text" name="staff" size="20" style="font-size: 12px;"><br>
-                                            <label for="operator" style="font-size: 12px;">Operator :</label>
-                                            <input type="text" name="operator" size="20" style="font-size: 12px;"><br>
-                                            <label for="helper" style="font-size: 12px;">Helper :</label>
-                                            <input type="text" name="helper" size="20" style="font-size: 12px;"><br>
-                                        </td>
-                                        <td>
-                                            <h6 style="text-align: center;">Waktu</h6>
-                                            <label for="lapor" style="font-size: 12px;">Lapor :</label>
-                                            <input type="time" name="lapor" size="20" style="font-size: 12px;"><br>
-                                            <label for="mulai" style="font-size: 12px;">Mulai :</label>
-                                            <input type="time" name="mulai" size="20" style="font-size: 12px;"><br>
-                                            <label for="selesai" style="font-size: 12px;">Selesai :</label>
-                                            <input type="time" name="selesai" size="20" style="font-size: 12px;"><br>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <!-- </form> -->
-                                <div class="table-responsive">
-                                <!-- <form method = "post"> -->
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" height="1%">
-                                    <label for="keterangan" style="font-size: 14px;">Keterangan :</label>
-                                    </table>
-                                    <textarea name="keterangan" rows="3" cols="150" name ="keterangan" 
-                                    placeholder="Masukan Keterangan....."> </textarea>
-                                    <br>
-                                    <button class="btn btn-primary" type="submit" name="btnsubmit" value="Submit">Submit</button>
-                                    <button class="btn btn-primary" type="" name="" value="reset">Reset</button>
+                                <th>ID Staff</th>
+                                <th>Staff Name</th>
+                                <th>Jabatan</th>
+                                <th>Action</th>           
+                                <tr style="height:20px">
+                                <?php
+                                $ambilsemuadatastaff = mysqli_query($conn,"select * from staff");
+                                $i = 1;
+                                while($data=mysqli_fetch_array($ambilsemuadatastaff)){
+                                    $idstaff = $data['id_staff'];
+                                    $staffname = $data['nama_staff'];
+                                    $jabatan = $data['jabatan'];
+                                    $status = $data['status']
 
+                                ?>
+                                <tr>
+                                    <td><?=$idstaff;?></td>
+                                    <td><?=$staffname?></td>
+                                    <td><?=$jabatan?></td>
+                                    <td><?=$status?></td>
+                                    <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$idstaff?>">
+                                    Edit
+                                    </button>
+                                    <input type="hidden" name="idcoyyangmaudihapus" value="<?=$idcoy?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$idstaff?>">
+                                    Delete
+                                    </button>
+                                    </td>
+                                </tr>
+
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="Edit<?=$idstaff?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                            <h4 class="modal-title">Edit</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                <input type = "text" name="idstaff" placeholder="Staff ID" class="form-control" required>
+                                <br>
+                                <input type = "text" name="namastaff" placeholder="Staff Name" class="form-control" required>
+                                <br>
+                                <input type = "text" name="jabatan" placeholder="Jabatan" class="form-control" required>
+                                <input type = "hidden" name="idcoy" value = "<?=$idstaff?>">
+                                <button type="submit" class="btn btn-primary" name="updatestaff">Submit</button>
+                                </div>
                                 </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+
+                                <!-- Delete Modal -->
+                                <div class="modal fade" id="Delete<?=$idstaff?>">
+                                            <div class="modal-dialog">
+                                            <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                            <h4 class="modal-title">Delete</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                Apakah Anda ingin menghapus <?=$idstaff?>?
+                                <br>
+                                <br>
+                                <input type = "hidden" name="idcoy" value = "<?=$idstaff?>">
+                                <button type="submit" class="btn btn-danger" name="deletestaff">Delete</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+
+
+                                <?php
+                                };
+                                ?>
+                            </table>
+
+
             </main>
             </div>
             </div>
+    
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
             <script src="js/scripts.js"></script>

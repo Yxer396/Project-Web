@@ -148,7 +148,7 @@
                 
                 ?>
                 <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
-                <?php
+                <?php                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                 }
                 ?>
             </select>
@@ -208,6 +208,7 @@
                                 <th>Pemilik </th>
                                 <th>Kapasitas(KG)</th>
                                 <th>Status</th>
+                                <th>Action</th>
                                 <tr style="height:20px">
                                 <?php
                                 $ambilsemuadataarmada = mysqli_query($conn,"select mai.nomor_armada_internal,mai.nopol,ja.jenis_kendaraan,mc2.company_name as companyName,mc1.company_name,mai.kapasitas,mai.status 
@@ -233,11 +234,125 @@
                                 <td><?=$idcoypemilik?></td>
                                 <td><?=$kapasitas?></td>
                                 <td><?=$status?></td>
+                                <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$nomorarmada?>">
+                                    Edit
+                                    </button>
+                                    <input type="hidden" name="idcoyyangmaudihapus" value="<?=$idcoy?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$nomorarmada?>">
+                                    Delete
+                                    </button>
+                                    </td>
                                 </tr>
+                                <!-- Edit Modal -->
+                            <div class="modal fade" id="Edit<?=$nomorarmada?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Edit</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                <input type = "text" name="nopol" value="<?=$nopol?>" class="form-control" required>
+                                <br>
+                                <label>Jenis Kendaraan :</label>
+                                <select name="kendaraan" class="form-control" value="<?=$jeniskendaraan?>" required>
+                                    <?php
+                                    $takealldatakendaraan = mysqli_query($conn,"select * from jenis_armada");
+                                    while($fetcharray = mysqli_fetch_array($takealldatakendaraan))
+                                    {
+                                        $takejenis = $fetcharray['jenis_kendaraan'];
+                                        $takeidarmada = $fetcharray['id_armada'];
+                                    ?>
+                                    <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
+                                    <?php                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                                    }
+                                    ?>
+                                </select>
+                                <br>
+                                <label>Company Name:</label>
+                                <select name="coy" class="form-control" value="<?=$coyname?>" required>
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from master_company");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                        $takename = $fetcharray['company_name'];
+                                        $takeid = $fetcharray['id_company'];
+                                    
+                                    ?>
+
+                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <br>
+                                <label>Pemilik : </label>
+                                <select name="pemilik" class="form-control" value= "<?=$idcoypemilik?>" required>
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from master_company");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                        $takename = $fetcharray['company_name'];
+                                        $takeid = $fetcharray['id_company'];
+                                    
+                                    ?>
+
+                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <br>
+                                <input type = "text" name="kapasitas" value="<?=$kapasitas?>" class="form-control" required>
+                                <br>
+                                <input type = "hidden" name="noarmada" value = "<?=$nomorarmada?>">
+                                <button type="submit" class="btn btn-primary" name="updatearmadainternal">Submit</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
+                                <!-- Delete Modal -->
+                            <div class="modal fade" id="Delete<?=$nomorarmada?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                Apakah Anda ingin menghapus <?=$nopol?>?
+                                <br>
+                                <br>
+                                <input type = "hidden" name="noarmada" value = "<?=$nomorarmada?>">
+                                <button type="submit" class="btn btn-danger" name="deletearmadainternal">Delete</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-..footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
                                 <?php 
                                 }
                                 ?>
-                                
                             </table>
 
 

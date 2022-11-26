@@ -188,6 +188,7 @@
                                 <th>Field 5</th>
                                 <th>Field 6</th>
                                 <th>Field 7</th>
+                                <th>Action</th>
                                 <tr style="height:20px">
                                 <?php
                                 $ambilsemuadatalokasi = mysqli_query($conn,"select * from master_lokasi");
@@ -212,7 +213,98 @@
                                     <td><?=$field5?></td>
                                     <td><?=$field6?></td>
                                     <td><?=$field7?></td>
+                                    <td>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$idlokasi?>">
+                                    Edit
+                                    </button>
+                                    <input type="hidden" name="idlokasiyangdihapus" value="<?=$idlokasi?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$idlokasi?>">
+                                    Delete
+                                    </button>
+                                    </td>
                                 </tr>
+                                <!-- Edit Modal -->
+                                <div class="modal fade" id="Edit<?=$idlokasi?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Edit</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                <select name="coy" class="form-control" required>
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from master_company");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                        $takename = $fetcharray['company_name'];
+                                        $takeid = $fetcharray['id_company'];
+                                    
+                                    ?>
+
+                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                                <br>
+                                <input type = "text" name="fieldsatu" placeholder="Field 1 " class="form-control" required>
+                                <br>
+                                <input type = "text" name="fielddua" placeholder="Field 2 " class="form-control" required>
+                                <br>
+                                <input type = "text" name="fieldtiga" placeholder="Field 3 " class="form-control" required>
+                                <br>
+                                <input type = "text" name="fieldempat" placeholder="Field 4 " class="form-control" required>
+                                <br>
+                                <input type = "text" name="fieldlima" placeholder="Field 5 " class="form-control" required>
+                                <br>
+                                <input type = "text" name="fieldenam" placeholder="Field 6 " class="form-control" required>
+                                <br>
+                                <input type = "text" name="fieldtujuh" placeholder="Field 7 " class="form-control" required>
+                                <br>
+                                <button type="submit" class="btn btn-primary" name="updatelokasi">Submit</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                                <!-- Delete Modal -->
+                            <div class="modal fade" id="Delete<?=$idlokasi?>">
+                                <div class="modal-dialog">
+                                <div class="modal-content">
+                        
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                <h4 class="modal-title">Delete</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                            
+                                <!-- Modal body -->
+                                <form method="post">
+                                <div class="modal-body">
+                                Apakah Anda ingin menghapus lokasi ini?
+                                <br>
+                                <br>
+                                <input type = "hidden" name="idlokasi" value = "<?=$idlokasi?>">
+                                <button type="submit" class="btn btn-danger" name="deletelokasi">Delete</button>
+                                </div>
+                                </form>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                            </div>
+                            
+                        </div>
+                        </div>
+                    </div>
                                 <?php
                                 };
                                 ?>

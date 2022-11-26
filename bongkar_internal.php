@@ -1,6 +1,9 @@
+<?php
+    require 'function.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>d
+    <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -117,6 +120,10 @@
                 <!-- <div class="card mb-4"> -->
                 <div class="card-body">
                     <div class="table-responsive">
+                    <form method = "post">
+                        <button type="submit" class="btn btn-primary" name="btnmulai">Mulai</button>
+                        <button type="submit" class="btn btn-primary" name="btnselesai">Selesai</button>
+                        <button type="submit" class="btn btn-primary" name="btnlapor">Lapor</button>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
@@ -127,30 +134,33 @@
                                     <label for="namasupir" style="font-size: 12px;">Nama Supir :</label>
                                     <input type="text" name="namasupir" size="20"><br>
                                     <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
-                                    <input list="lokasi">
-                                    <datalist id="lokasi">  
-                                            <option value="a">
-                                            <option value="b">
-                                            <option value="c">
-                                            <option value="d">
-                                            <option value="e">
-                                        </datalist><br>
+                                    <select name="coy">
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from master_company");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                    $takename = $fetcharray['company_name'];
+                                    $takeid = $fetcharray['id_company'];
+                                    ?>
+                                    <option value="<?=$takeid;?>"><?=$takename;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select><br>
                                     <label for="jenisarmada" style="font-size: 12px;">Jenis Armada :</label>
-                                    <input list="jenisarmada">
-                                    <datalist id="jenisarmada">
-                                            <option value="L300">
-                                            <option value="Fuso">    
-                                            <option value="Trailer">
-                                            <option value="Viar">
-                                            <option value="Colt D">
-                                            <option value="Box">
-                                            <option value="Container">
-                                            <option value="Motor">
-                                            <option value="Tronton">
-                                            <option value="Gandeng">
-                                            <option value="Mobil">
-                                            <option value="Becak">
-                                        </datalist>
+                                    <select name="armada">
+                                    <?php
+                                    $takealldata = mysqli_query($conn,"select * from jenis_armada");
+                                    while($fetcharray = mysqli_fetch_array($takealldata))
+                                    {
+                                    $takejenis = $fetcharray['jenis_kendaraan'];
+                                    $takeidarmada = $fetcharray['id_armada'];
+                                    ?>
+                                    <option value="<?=$takeidarmada;?>"><?=$takejenis;?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                    </select>
                                 </td>
                                 <td>
                                     <label for="jumlahsj" style="font-size: 12px;">Jumlah SJ : </label>

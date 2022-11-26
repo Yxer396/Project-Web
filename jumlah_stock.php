@@ -155,7 +155,7 @@
                                 </td>
                                 <td>
                                     <label for="tgl_masuk" style="font-size: 12px;">Tanggal : </label>
-                                    <input type="text" name="tgl_masuk" size="20"><br>
+                                    <input type="date" name="tgl_masuk" size="20"><br>
                                     <button>Search</button>
                                 </td>
                             </tr>
@@ -179,11 +179,12 @@
                                     <td>lo</td>
                                     <td>alo</td>
                                     <td>halo</td>
-                                    <?php
-                                    $today = getdate()
+                                    <td>
+                                    <?php>
+                                    echo $currentDateTime
                                     ?>
-                                    <td>1-1-2001</td>
-                                    <td>2-1-2002</td>
+                                    </td>
+                                    <td></td>
                                     <td><a href="detail_stock.php">Detail</a></td>
                                     <td><button type="button" class="btn btn-primary" name = "btncss">
                                     Css

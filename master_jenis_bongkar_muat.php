@@ -239,8 +239,8 @@
                                 <?php   
                                 };
                                 ?>   
-                                
-                            </table>
+                            </table>         
+                          
 
 
             </main>
