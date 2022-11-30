@@ -142,8 +142,7 @@ if(isset($_POST['addnewlokasi'])){
 
 //update master lokasi
 if(isset($_POST['updatelokasi'])){
-    $idcompany = $_POST['idlokasi'];
-    $companyname = $_POST['companyname'];
+    $idlokasi = $_POST['idlokasi'];
     $namacoy = $_POST['coy'];
     $lokasi1 = $_POST['fieldsatu'];
     $lokasi2 = $_POST['fielddua'];
@@ -152,8 +151,21 @@ if(isset($_POST['updatelokasi'])){
     $lokasi5 = $_POST['fieldlima'];
     $lokasi6 = $_POST['fieldenam'];
     $lokasi7 = $_POST['fieldtujuh'];
-    $updatetotablecompany = mysqli_query($conn,"update master_lokasi set id_company= '$namacoy', field1 = '$lokasi1', field2 = '$lokasi2', field3 = '$lokasi3', field4 = '$lokasi4', field5 = '$lokasi5', field6 = '$lokasi6', field7 = '$lokasi7' where id_lokasi = '$idlokasi'");
-    if($updatetotablecompany){
+    $updatetotablelokasi = mysqli_query($conn,"update master_lokasi set id_company= '$namacoy', field1 = '$lokasi1', field2 = '$lokasi2', field3 = '$lokasi3', field4 = '$lokasi4', field5 = '$lokasi5', field6 = '$lokasi6', field7 = '$lokasi7' where id_lokasi = '$idlokasi'");
+    if($updatetotablelokasi){
+        header('location:master_lokasi.php');
+    }else{
+        echo 'gagal';
+        header('location:master_lokasi.php');
+    }
+}
+
+//delete master lokasi
+if(isset($_POST['deletelokasi'])){
+    $idlokasi = $_POST['idlokasi'];
+
+    $deletetotablelokasi = mysqli_query($conn,"delete from master_lokasi where id_lokasi = '$idlokasi'");
+    if($deletetotablelokasi){
         header('location:master_lokasi.php');
     }else{
         echo 'gagal';
@@ -239,7 +251,26 @@ if(isset($_POST['addnewstaff'])){
         echo 'gagal';
     }
 }
+//edit staff
+if(isset($_POST['updatestaff'])){
+    $nostaff = $_POST['nostaff'];
+    $staffid = $_POST['idstaff'];
+    $staffname = $_POST['namastaff'];
+    $jabatan = $_POST['jabatan'];
+    $updatetotablestaff = mysqli_query($conn,"update staff set id_staff = '$staffid', nama_staff = '$staffname', jabatan = '$jabatan' where no_staff ='$nostaff'");
+}
 
+//delete staff
+if(isset($_POST['deletestaff'])){
+    $nostaff = $_POST['nostaff'];
+    $deletetotablestaff = mysqli_query($conn,"delete from staff where no_staff = '$nostaff'");
+    if($deletetotablestaff){
+        header('location:master_staff.php');                                                                        
+    }else{
+        echo 'gagal';
+        header('location:master_staff.php');
+    }
+}
 //time add muat eksternal
 if(isset($_POST['btnmulai'])){
    $timemulai = $_POST['mulai'];

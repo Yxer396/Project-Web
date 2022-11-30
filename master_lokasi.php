@@ -194,6 +194,7 @@
                                 $ambilsemuadatalokasi = mysqli_query($conn,"select * from master_lokasi");
                                 $i=1;
                                 while($data=mysqli_fetch_array($ambilsemuadatalokasi)){
+                                    $idlokasi = $data['id_lokasi'];
                                     $idcoy = $data['id_company'];
                                     $field1 = $data['field1'];
                                     $field2 = $data['field2'];
@@ -253,19 +254,19 @@
                                     ?>
                                 </select>
                                 <br>
-                                <input type = "text" name="fieldsatu" placeholder="Field 1 " class="form-control" required>
+                                <input type = "text" name="fieldsatu" placeholder="Field 1 " class="form-control" value="<?=$field1?>" required>
                                 <br>
-                                <input type = "text" name="fielddua" placeholder="Field 2 " class="form-control" required>
+                                <input type = "text" name="fielddua" placeholder="Field 2 " class="form-control" value="<?=$field2?>" required>
                                 <br>
-                                <input type = "text" name="fieldtiga" placeholder="Field 3 " class="form-control" required>
+                                <input type = "text" name="fieldtiga" placeholder="Field 3 " class="form-control" value="<?=$field3?>" required>
                                 <br>
-                                <input type = "text" name="fieldempat" placeholder="Field 4 " class="form-control" required>
+                                <input type = "text" name="fieldempat" placeholder="Field 4 " class="form-control" value="<?=$field4?>" required>
                                 <br>
-                                <input type = "text" name="fieldlima" placeholder="Field 5 " class="form-control" required>
+                                <input type = "text" name="fieldlima" placeholder="Field 5 " class="form-control" value="<?=$field5?>" required>
                                 <br>
-                                <input type = "text" name="fieldenam" placeholder="Field 6 " class="form-control" required>
+                                <input type = "text" name="fieldenam" placeholder="Field 6 " class="form-control" value="<?=$field6?>" required>
                                 <br>
-                                <input type = "text" name="fieldtujuh" placeholder="Field 7 " class="form-control" required>
+                                <input type = "text" name="fieldtujuh" placeholder="Field 7 " class="form-control" value="<?=$field7?>" required>
                                 <br>
                                 <button type="submit" class="btn btn-primary" name="updatelokasi">Submit</button>
                                 </div>
@@ -292,7 +293,6 @@
                                 <form method="post">
                                 <div class="modal-body">
                                 Apakah Anda ingin menghapus lokasi ini?
-                                <br>
                                 <br>
                                 <input type = "hidden" name="idlokasi" value = "<?=$idlokasi?>">
                                 <button type="submit" class="btn btn-danger" name="deletelokasi">Delete</button>

@@ -121,6 +121,10 @@
                 <!-- <div class="card mb-4"> -->
                 <div class="card-body">
                     <div class="table-responsive">
+                    <form method = "post">
+                    <button type="button" onclick="document.getElementById('date_time_lapor').innerHTML = Date()" class="btn btn-primary">Lapor</button>
+                    <button type="button" onclick="document.getElementById('date_time_mulai').innerHTML = Date()" class="btn btn-primary">Mulai</button>
+                    <button type="button" onclick="document.getElementById('date_time_selesai').innerHTML = Date()" class="btn btn-primary">Selesai</button>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>

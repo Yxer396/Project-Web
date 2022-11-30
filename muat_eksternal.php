@@ -121,9 +121,9 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <form method = "post">
-                        <button type="submit" class="btn btn-primary" name="btnmulai">Mulai</button>
-                        <button type="submit" class="btn btn-primary" name="btnselesai">Selesai</button>
-                        <button type="submit" class="btn btn-primary" name="btnlapor">Lapor</button>
+                        <button type="button" onclick="document.getElementById('date_time_lapor').innerHTML = Date()" class="btn btn-primary">Lapor</button>
+                        <button type="button" onclick="document.getElementById('date_time_mulai').innerHTML = Date()" class="btn btn-primary">Mulai</button>
+                        <button type="button" onclick="document.getElementById('date_time_selesai').innerHTML = Date()" class="btn btn-primary">Selesai</button>
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <tr>
                                 <td>
@@ -213,7 +213,8 @@
                                         <td>
                                             <h6 style="text-align: center;">Waktu</h6>
                                             <label for="lapor" style="font-size: 12px;">Lapor :</label>
-                                            <input type="time" name="lapor" size="20" style="font-size: 12px;"><br>
+                                            <p id="date_time_lapor"></p>
+                                            <input type="text" name="lapor" size="20" style="font-size: 12px;" id="date_time_button"><br>
                                             <label for="mulai" style="font-size: 12px;">Mulai :</label>
                                             <input type="time" name="mulai" size="20" style="font-size: 12px;"><br>
                                             <label for="selesai" style="font-size: 12px;">Selesai :</label>
@@ -237,6 +238,7 @@
             </main>
             </div>
             </div>
+            <script></script>
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
             <script src="js/scripts.js"></script>

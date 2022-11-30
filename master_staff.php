@@ -157,12 +157,14 @@
                                 <th>ID Staff</th>
                                 <th>Staff Name</th>
                                 <th>Jabatan</th>
+                                <th>Status</th>
                                 <th>Action</th>           
                                 <tr style="height:20px">
                                 <?php
                                 $ambilsemuadatastaff = mysqli_query($conn,"select * from staff");
                                 $i = 1;
                                 while($data=mysqli_fetch_array($ambilsemuadatastaff)){
+                                    $nostaff = $data['no_staff'];
                                     $idstaff = $data['id_staff'];
                                     $staffname = $data['nama_staff'];
                                     $jabatan = $data['jabatan'];
@@ -175,18 +177,18 @@
                                     <td><?=$jabatan?></td>
                                     <td><?=$status?></td>
                                     <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$idstaff?>">
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?=$nostaff?>">
                                     Edit
                                     </button>
                                     <input type="hidden" name="idcoyyangmaudihapus" value="<?=$idcoy?>">
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$idstaff?>">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?=$nostaff?>">
                                     Delete
                                     </button>
                                     </td>
                                 </tr>
 
                                 <!-- Edit Modal -->
-                                <div class="modal fade" id="Edit<?=$idstaff?>">
+                                <div class="modal fade" id="Edit<?=$nostaff?>">
                                 <div class="modal-dialog">
                                 <div class="modal-content">
                         
@@ -199,12 +201,13 @@
                                 <!-- Modal body -->
                                 <form method="post">
                                 <div class="modal-body">
-                                <input type = "text" name="idstaff" placeholder="Staff ID" class="form-control" required>
+                                <input type = "text" name="idstaff" placeholder="Staff ID" class="form-control" value="<?=$idstaff?>"required>
                                 <br>
-                                <input type = "text" name="namastaff" placeholder="Staff Name" class="form-control" required>
+                                <input type = "text" name="namastaff" placeholder="Staff Name" class="form-control" value="<?=$staffname?>"required>
                                 <br>
-                                <input type = "text" name="jabatan" placeholder="Jabatan" class="form-control" required>
-                                <input type = "hidden" name="idcoy" value = "<?=$idstaff?>">
+                                <input type = "text" name="jabatan" placeholder="Jabatan" class="form-control" value="<?=$jabatan?>"required>
+                                <br>
+                                <input type = "hidden" name="nostaff" value = "<?=$nostaff?>">
                                 <button type="submit" class="btn btn-primary" name="updatestaff">Submit</button>
                                 </div>
                                 </form>
@@ -217,7 +220,7 @@
                     </div>
 
                                 <!-- Delete Modal -->
-                                <div class="modal fade" id="Delete<?=$idstaff?>">
+                                <div class="modal fade" id="Delete<?=$nostaff?>">
                                             <div class="modal-dialog">
                                             <div class="modal-content">
                         
@@ -233,7 +236,7 @@
                                 Apakah Anda ingin menghapus <?=$idstaff?>?
                                 <br>
                                 <br>
-                                <input type = "hidden" name="idcoy" value = "<?=$idstaff?>">
+                                <input type = "hidden" name="nostaff" value = "<?=$nostaff?>">
                                 <button type="submit" class="btn btn-danger" name="deletestaff">Delete</button>
                                 </div>
                                 </form>
