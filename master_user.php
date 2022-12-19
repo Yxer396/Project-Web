@@ -10,7 +10,7 @@ require 'function.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Master Item</title>
+    <title>Master User</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@ require 'function.php';
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-        <a class="navbar-brand" href="#">Master Item</a>
+        <a class="navbar-brand" href="#">Master User</a>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             <div class="input-group">
@@ -124,7 +124,7 @@ require 'function.php';
             <main>
                 <!-- Button to Open the Modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Tambah Item
+                    Tambah User
                 </button>
                 <!-- The Modal -->
                 <div class="modal fade" id="myModal">
@@ -138,50 +138,23 @@ require 'function.php';
                             </div>
 
                             <!-- Modal body -->
-                            <form method="post">
+                            <form method='post'>
                                 <div class="modal-body">
-                                    <input type="text" name="itemcode" placeholder="Item Code" class="form-control" required>
+                                    <input type="text" name="namauser" placeholder="Masukan Nama" class="form-control" required>
                                     <br>
-                                    <input type="text" name="itemname" placeholder="Item Name" class="form-control" required>
+                                    <input type="text" name="usernameuser" placeholder="Username" class="form-control" required>
                                     <br>
-                                    <input type="number" name="itemgroup" placeholder="Item Group" class="form-control" required>
+                                    <input type="text" name="passworduser" placeholder="Password" class="form-control" required>
                                     <br>
-                                    <input type="text" name="product" placeholder="Product" class="form-control" required>
+                                    <input type="text" name="jabatan" placeholder="Jabatan" class="form-control" required>
                                     <br>
-                                    <input type="text" name="subproduct" placeholder="Sub Product" class="form-control">
-                                    <br>
-                                    <select name="grade">
-                                        <option>Select Grade</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="C">C</option>
-                                        <option value="D">D</option>
-                                        <option value="E">E</option>
-                                    </select>
-                                    <br>
-                                    <br>
-                                    <input type="text" name="mainuom" placeholder="Main UOM" class="form-control" required>
-                                    <br>
-                                    <input type="text" name="secuom" placeholder="Sec UOM" class="form-control">
-                                    <br>
-                                    <label> Is Cutting : </label>
-                                    <br>
-                                    <input type="radio" name="check" onclick="onlyOne(this)" value="yes" &nbsp> Yes
-                                    <input type="radio" name="check" onclick="onlyOne(this)" value="no">No
-                                    <br>
-                                    <br>
-                                    <input type="text" name="weight" placeholder="Weight" class="form-control" required>
-                                    <br>
-                                    <input type="text" name="tolerance" placeholder="Tolerance" class="form-control" required>
-                                    <br>
-                                    <input type="text" name="description" placeholder="description" class="form-control">
-                                    <br>
-                                    <button type="submit" class="btn btn-primary" name="addnewitem">Submit</button>
+                                    <button type="submit" class="btn btn-primary" name="addnewuser">Submit</button>
                                 </div>
                             </form>
                             <!-- Modal footer -->
                             <div class="modal-footer">
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -189,73 +162,40 @@ require 'function.php';
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <th>No</th>
-                        <th>Item Code</th>
-                        <th>Item Name</th>
-                        <th>Id Group Item</th>
-                        <th>Product</th>
-                        <th>Sub Product</th>
-                        <th>Grade</th>
-                        <th>Main UOM</th>
-                        <th>Second UOM</th>
-                        <th>Is Cutting</th>
-                        <th>Weight</th>
-                        <th>Tolerance</th>
-                        <th>Create Time</th>
-                        <th>Update Time</th>
-                        <th>Description</th>
-                        <th>Status</th>
+                        <th>Nama User</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Jabatan</th>
                         <th>Action</th>
                         <tr style="height:20px">
                             <?php
-                            $ambilsemuadataitem = mysqli_query($conn, "select * from stock");
+                            $ambilsemuadatauser = mysqli_query($conn, "select * from user");
                             $i = 1;
-                            while ($data = mysqli_fetch_array($ambilsemuadataitem)) {
-                                $iditem = $data['id_item'];
-                                $itemcode = $data['item_code'];
-                                $itemname = $data['item_name'];
-                                $iditemgroup = $data['id_item_group'];
-                                $product = $data['product'];
-                                $subproduct = $data['sub_product'];
-                                $grade = $data['grade'];
-                                $mainuom = $data['main_uom'];
-                                $secuom = $data['sec_uom'];
-                                $iscutting = $data['is_cutting'];
-                                $weight = $data['weight'];
-                                $tolerance = $data['tolerance'];
-                                $createtime = $data['create_time'];
-                                $updatetime = $data['update_time'];
-                                $description = $data['description'];
-                                $status = $data['status'];
+                            while ($data = mysqli_fetch_array($ambilsemuadatauser)) {
+                                $iduser = $data['id_user'];
+                                $namauser = $data['nama'];
+                                $username = $data['username'];
+                                $password = $data['password'];
+                                $jabatan = $data['level'];
                             ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td><?= $itemcode; ?></td>
-                            <td><?= $itemname; ?></td>
-                            <td><?= $iditemgroup; ?></td>
-                            <td><?= $product; ?></td>
-                            <td><?= $subproduct; ?></td>
-                            <td><?= $grade; ?></td>
-                            <td><?= $mainuom; ?></td>
-                            <td><?= $secuom; ?></td>
-                            <td><?= $iscutting; ?></td>
-                            <td><?= $weight; ?></td>
-                            <td><?= $tolerance; ?></td>
-                            <td><?= $createtime; ?></td>
-                            <td><?= $updatetime; ?></td>
-                            <td><?= $description; ?></td>
-                            <td><?= $status; ?></td>
+                            <td><?= $namauser ?></td>
+                            <td><?= $username ?></td>
+                            <td><?= $password ?></td>
+                            <td><?= $jabatan ?></td>
                             <td>
-                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?= $iditem ?>">
+                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?= $iduser ?>">
                                     Edit
                                 </button>
-                                <input type="hidden" name="iditemyangmaudihapus" value="<?= $iditem ?>">
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?= $iditem ?>">
+                                <input type="hidden" name="iduser" value="<?= $iduser ?>">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Delete<?= $iduser ?>">
                                     Delete
                                 </button>
                             </td>
                         </tr>
                         <!-- Edit Modal -->
-                        <div class="modal fade" id="Edit<?= $iditem ?>">
+                        <div class="modal fade" id="Edit<?= $iduser ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -268,44 +208,16 @@ require 'function.php';
                                     <!-- Modal body -->
                                     <form method="post">
                                         <div class="modal-body">
-                                            <input type="text" name="itemcode" value="<?= $itemcode ?>" class="form-control" required>
+                                            <input type="text" name="namauser" value="<?= $namauser ?>" class="form-control" required>
                                             <br>
-                                            <input type="text" name="itemname" value="<?= $itemname ?>" class="form-control" required>
+                                            <input type="text" name="usernameuser" value="<?= $username ?>" class="form-control" required>
                                             <br>
-                                            <input type="number" name="itemgroup" value="<?= $itemgroup ?>" class="form-control" required>
+                                            <input type="text" name="passworduser" value="<?= $password ?>" class="form-control" required>
                                             <br>
-                                            <input type="text" name="product" value="<?= $product ?>" class="form-control" required>
+                                            <input type="text" name="jabatan" value="<?= $jabatan ?>" class="form-control" required>
                                             <br>
-                                            <input type="text" name="subproduct" value="<?= $subproduct ?>" class="form-control">
-                                            <br>
-                                            <select name="grade">
-                                                <option>Select Grade</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
-                                                <option value="D">D</option>
-                                                <option value="E">E</option>
-                                            </select>
-                                            <br>
-                                            <br>
-                                            <input type="text" name="mainuom" value="<?= $mainuom ?>" class="form-control" required>
-                                            <br>
-                                            <input type="text" name="secuom" value="<?= $secuom ?>" class="form-control">
-                                            <br>
-                                            <label> Is Cutting : </label>
-                                            <br>
-                                            <input type="radio" name="check" onclick="onlyOne(this)" value="yes" &nbsp> Yes
-                                            <input type="radio" name="check" onclick="onlyOne(this)" value="no">No
-                                            <br>
-                                            <br>
-                                            <input type="text" name="weight" value="<?= $weight ?>" class="form-control" required>
-                                            <br>
-                                            <input type="text" name="tolerance" value="<?= $tolerance ?>" class="form-control" required>
-                                            <br>
-                                            <input type="text" name="description" value="<?= $description ?>" class="form-control">
-                                            <br>
-                                            <input type="hidden" name="iditem" value="<?= $iditem ?>">
-                                            <button type="submit" class="btn btn-primary" name="updateitem">Submit</button>
+                                            <input type="hidden" name="iduser" value="<?= $iduser ?>">
+                                            <button type="submit" class="btn btn-primary" name="updateuser">Submit</button>
                                         </div>
                                     </form>
                                     <!-- Modal footer -->
@@ -316,7 +228,7 @@ require 'function.php';
                             </div>
                         </div>
                         <!-- Delete Modal -->
-                        <div class="modal fade" id="Delete<?= $iditem ?>">
+                        <div class="modal fade" id="Delete<?= $iduser ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
 
@@ -329,11 +241,11 @@ require 'function.php';
                                     <!-- Modal body -->
                                     <form method="post">
                                         <div class="modal-body">
-                                            Apakah Anda ingin menghapus <?= $itemname ?>?
+                                            Apakah Anda ingin menghapus <?= $username ?>?
                                             <br>
                                             <br>
-                                            <input type="hidden" name="iditem" value="<?= $iditem ?>">
-                                            <button type="submit" class="btn btn-danger" name="deleteitem">Delete</button>
+                                            <input type="hidden" name="iduser" value="<?= $iduser ?>">
+                                            <button type="submit" class="btn btn-danger" name="deleteuser">Delete</button>
                                         </div>
                                     </form>
                                     <!-- Modal footer -->
@@ -347,6 +259,7 @@ require 'function.php';
                             };
                     ?>
                     </table>
+
 
 
             </main>

@@ -53,13 +53,16 @@
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="master_company.php">Master Company</a>
-                                    <a class="nav-link" href="master_jenis_armada.php">Master Jenis Armada</a>
-                                    <a class="nav-link" href="master_jenis_bongkar_muat.php">Master Jenis Bongkar muat</a>
-                                    <a class="nav-link" href="master_lokasi.php">Master Lokasi</a>
-                                </nav>
-                            </div>
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="master_company.php">Master Company</a>
+                                <a class="nav-link" href="master_jenis_armada.php">Master Jenis Armada</a>
+                                <a class="nav-link" href="master_jenis_bongkar_muat.php">Master Jenis Bongkar muat</a>
+                                <a class="nav-link" href="master_lokasi.php">Master Lokasi</a>
+                                <a class="nav-link" href="master_user.php">Master User</a>
+                                <a class="nav-link" href="master_staff.php">Master Staff</a>
+                                <a class="nav-link" href="master_item.php">Master Item</a>
+                            </nav>
+                        </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Staff  
