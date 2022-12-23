@@ -137,7 +137,7 @@ require 'function.php';
                                 <tr>
                                     <td>
                                         <label for="date" style="font-size: 12px;">Tanggal : </label>
-                                        <input type="date" id="date" name="date" size="20"><br>
+                                        <input type="text" readonly="readonly"value="<?php echo date("j F Y");?>" name="tgl"><br>
                                         <label for="nopol" style="font-size: 12px;">Nopol :</label>
                                         <input type="text" id="nopol" name="nopol" size="20"><br>
                                         <label for="namasupir" style="font-size: 12px;">Nama Supir :</label>
@@ -337,7 +337,7 @@ require 'function.php';
         var i = 1;
         $("#add_sj").click(function() {
 
-            $('#addr' + i).html("<td>" + (i + 1) + "</td></td><td><input type='text' name='nomorsj" + i + "' /></td><td><input type='text' name='namaitem" + i + "'/></td><td><input type='text' name='qty" + i + "' /></td><td><input type='text' name='tonase" + i + "'/></td>" + i + "<td class='text-center'><p data-placement='top' data-toggle='tooltip' title='Delete'><button class='btn btn-danger btn-xs deletebtn'data-title='Delete' data-toggle='modal'data-target='#deletemodal'><span class='glyphicon glyphicon-trash'></span></button></p></td>");
+            $('#addr' + i).html("<td>" + (i + 1) + "</td></td><td><input type='text' name='nomorsj" + i + "' /></td><td><input type='text' name='namaitem" + i + "'/></td><td><input type='text' name='qty" + i + "' /></td><td><input type='text' name='tonase" + i + "'/></td>" + i + "<td class='text-center'><p data-placement='top' data-toggle='tooltip' title='Delete'><button class='btn btn-danger btn-xs deletebtn'data-title='Delete' ><span class='glyphicon glyphicon-trash'></span></button></p></td>");
 
             $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
             i++;
