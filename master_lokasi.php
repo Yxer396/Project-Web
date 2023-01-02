@@ -194,11 +194,11 @@
                                 <th>Action</th>
                                 <tr style="height:20px">
                                 <?php
-                                $ambilsemuadatalokasi = mysqli_query($conn,"select * from master_lokasi");
+                                $ambilsemuadatalokasi = mysqli_query($conn,"select * from master_lokasi JOIN master_company ON master_lokasi.id_company = master_company.id_company");
                                 $i=1;
                                 while($data=mysqli_fetch_array($ambilsemuadatalokasi)){
                                     $idlokasi = $data['id_lokasi'];
-                                    $idcoy = $data['id_company'];
+                                    $coyname = $data['company_name'];
                                     $field1 = $data['field1'];
                                     $field2 = $data['field2'];
                                     $field3 = $data['field3'];
@@ -209,7 +209,7 @@
                                 ?>
                                 <tr>
                                     <td><?=$i++;?></td>
-                                    <td><?=$idcoy?></td>
+                                    <td><?=$coyname?></td>
                                     <td><?=$field1?></td>
                                     <td><?=$field2?></td>
                                     <td><?=$field3?></td>

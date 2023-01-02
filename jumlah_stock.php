@@ -152,7 +152,7 @@ require 'function.php'
                                         <label for="lokasi" style="font-size: 12px;">Lokasi :</label>
                                         <select name="lokasi">
                                             <?php
-                                            $takealldata = mysqli_query($conn, "select field1,field2,field3,field4,field5,field6,field7 from master_lokasi ");
+                                            $takealldata = mysqli_query($conn, "select * from master_lokasi");
                                             while ($fetcharray = mysqli_fetch_array($takealldata)) {
                                                 $takeid = $fetcharray['id_company'];
                                                 $takeidlok = $fetcharray['id_lokasi'];
@@ -164,9 +164,21 @@ require 'function.php'
                                         </select><br>
                                     </td>
                                     <td>
-                                        <label for="tgl_masuk" style="font-size: 12px;">Tanggal : </label>
-                                        <input type="date" name="tgl_masuk" size="20"><br>
-                                        <button>Search</button>
+                                        <label for="tgl_masuk" style="font-size: 12px;">From Date : </label>
+                                        <input type="date" name="from_date" value="<?php if (isset($_GET['from_date'])) {
+                                                                                        echo $_GET['from_date'];
+                                                                                    } ?>" class="form-control">
+                                        <br>
+                                        <label for="tgl_masuk" style="font-size: 12px;">To Date : </label>
+                                        <input type="date" name="to_date" value="<?php if (isset($_GET['to_date'])) {
+                                                                                        echo $_GET['to_date'];
+                                                                                    } ?>" class="form-control">
+                                        <br>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Search    </button>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
@@ -197,7 +209,7 @@ require 'function.php'
                                         </td>
                                         <td><a href="detail_stock.php">Detail</a></td>
                                         <td>
-                                            <button type="button" onclick="dateCss(); this.disabled=true;" class="btn btn-primary" required> 
+                                            <button type="button" onclick="dateCss(); this.disabled=true;" class="btn btn-primary" required>
                                                 CSS
                                             </button>
                                         </td>
@@ -214,7 +226,7 @@ require 'function.php'
                             function dateCss() {
                                 var currentdate = new Date();
                                 var timenow = +currentdate.getDate() + "/" +
-                                    (currentdate.getMonth()+1) + "/" +
+                                    (currentdate.getMonth() + 1) + "/" +
                                     currentdate.getFullYear();
                                 document.getElementById("dateCss").innerHTML = timenow;
                             }
@@ -223,7 +235,7 @@ require 'function.php'
                             function dateCso() {
                                 var currentdate = new Date();
                                 var timenow = +currentdate.getDate() + "/" +
-                                    (currentdate.getMonth()+1) + "/" +
+                                    (currentdate.getMonth() + 1) + "/" +
                                     currentdate.getFullYear();
                                 document.getElementById("dateCso").innerHTML = timenow;
                             }

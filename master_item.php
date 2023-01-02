@@ -290,12 +290,12 @@ require 'function.php';
                                             <br>
                                             <input type="text" name="mainuom" value="<?= $mainuom ?>" class="form-control" required>
                                             <br>
-                                            <input type="text" name="secuom" value="<?= $secuom ?>" class="form-control">
+                                            <input type="text" name="secuom" value="<?= $secuom ?>" class="form-control" required>
                                             <br>
                                             <label> Is Cutting : </label>
                                             <br>
                                             <input type="radio" name="check" onclick="onlyOne(this)" value="yes" &nbsp> Yes
-                                            <input type="radio" name="check" onclick="onlyOne(this)" value="no">No
+                                            <input type="radio" name="check" onclick="onlyOne(this)" value="no" &nbsp>No
                                             <br>
                                             <br>
                                             <input type="text" name="weight" value="<?= $weight ?>" class="form-control" required>
@@ -304,7 +304,7 @@ require 'function.php';
                                             <br>
                                             <input type="text" name="description" value="<?= $description ?>" class="form-control">
                                             <br>
-                                            <input type="hidden" name="iditem" value="<?= $iditem ?>">
+                                            <input type="hidden" name="itemyangdiedit" value="<?= $iditem ?>">
                                             <button type="submit" class="btn btn-primary" name="updateitem">Submit</button>
                                         </div>
                                     </form>
@@ -332,7 +332,7 @@ require 'function.php';
                                             Apakah Anda ingin menghapus <?= $itemname ?>?
                                             <br>
                                             <br>
-                                            <input type="hidden" name="iditem" value="<?= $iditem ?>">
+                                            <input type="hidden" name="itemyangdidelete" value="<?= $iditem ?>">
                                             <button type="submit" class="btn btn-danger" name="deleteitem">Delete</button>
                                         </div>
                                     </form>

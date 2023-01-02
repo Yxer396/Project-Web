@@ -185,7 +185,6 @@ require 'function.php';
                             </table>
                             <div id="add_sj" class="btn btn-primary">Add SJ</div>
                             <div id="add_row" class="btn btn-primary">Add Item</div>
-                            <input class="btn btn-primary" type="button" value="Delete Row/s" onclick="deleteRowFromTable('tab_logic')">
                             <!-- </form> -->
                             <!-- <div class="card-body"> -->
                             <div class="table-responsive">
@@ -196,7 +195,7 @@ require 'function.php';
                                         <th>Nama Item</th>
                                         <th>QTY</th>
                                         <th>Tonase (kg)</th>
-                                        <th></th>
+                                        <th>Action</th>
                                     </tr>
                                     <tr id='addr0'>
                                         <td>1</td>
@@ -205,11 +204,7 @@ require 'function.php';
                                         <td><input type="text" name="qty" style="font-size: 12px;"></td>
                                         <td><input type="text" name="tonase" style="font-size: 12px;"></td>
                                         <td class="text-center">
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button class="btn btn-danger btn-xs deletebtn" data-title="Delete" data-toggle="modal" data-target="#deletemodal">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                </button>
-                                            </p>
+                                        <button onclick="deleteRow()" class="btn btn-danger">Delete Row</button>
                                         </td>
                                     </tr>
                                     <tr id='addr1'>
@@ -327,7 +322,7 @@ require 'function.php';
         var i = 1;
         $("#add_row").click(function() {
 
-            $('#addr' + i).html("<td>" + (i + 1) + "<td></td><td><input type='text' name='namaitem" + i + "'/></td><td><input type='text' name='qty" + i + "' /></td><td><input type='text' name='tonase" + i + "'/></td><td class='text-center'><p data-placement='top' data-toggle='tooltip' title='Delete'><button class='btn btn-danger btn-xs deletebtn'data-title='Delete' data-toggle='modal'data-target='#deletemodal'><span class='glyphicon glyphicon-trash'></span></button></p></td>");
+            $('#addr' + i).html("<td>" + (i + 1) + "<td></td><td><input type='text' name='namaitem" + i + "'/></td><td><input type='text' name='qty" + i + "' /></td><td><input type='text' name='tonase" + i + "'/></td><td class = 'text-center'><input class='btn btn-danger' type='button' value='Delete Row' onclick='deleteRow(this)" + i + "'/></td>");
             $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
             i++;
         });
@@ -337,26 +332,25 @@ require 'function.php';
         var i = 1;
         $("#add_sj").click(function() {
 
-            $('#addr' + i).html("<td>" + (i + 1) + "</td></td><td><input type='text' name='nomorsj" + i + "' /></td><td><input type='text' name='namaitem" + i + "'/></td><td><input type='text' name='qty" + i + "' /></td><td><input type='text' name='tonase" + i + "'/></td>" + i + "<td class='text-center'><p data-placement='top' data-toggle='tooltip' title='Delete'><button class='btn btn-danger btn-xs deletebtn'data-title='Delete' ><span class='glyphicon glyphicon-trash'></span></button></p></td>");
-
+            $('#addr' + i).html("<td>" + (i + 1) + "</td><td><input type='text' name='nomorsj" + i + "' /></td><td><input type='text' name='namaitem" + i + "'/></td><td><input type='text' name='qty" + i + "' /></td><td><input type='text' name='tonase" + i + "'/></td><td class = 'text-center'><input class='btn btn-danger' type='button' value='Delete Row' onclick='deleteRow(this)" + i + "'/></td>");
             $('#tab_logic').append('<tr id="addr' + (i + 1) + '"></tr>');
             i++;
         });
     </script>
     <script>
-        function deleteRow(ele) {
+        function deleteRow(ele){
             var table = document.getElementById('tab_logic');
             var rowCount = table.rows.length;
-            if (rowCount <= 1) {
+            if(rowCount <= 1){
                 alert("There is no row available to delete!");
                 return;
             }
-            if (ele) {
+            if(ele){
                 //delete specific row
                 ele.parentNode.parentNode.remove();
-            } else {
+            }else{
                 //delete last row
-                table.deleteRow(rowCount - 1);
+                table.deleteRow(rowCount-1);
             }
         }
     </script>

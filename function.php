@@ -241,7 +241,7 @@ if (isset($_POST['addnewitem'])) {
 
 //update item
 if (isset($_POST['updateitem'])) {
-    $iditem = $_POST['id_item'];
+    $iditem = $_POST['itemyangdiedit'];
     $itemcode = $_POST['itemcode'];
     $itemname = $_POST['itemname'];
     $itemgroup = $_POST['itemgroup'];
@@ -254,7 +254,7 @@ if (isset($_POST['updateitem'])) {
     $weight = $_POST['weight'];
     $tolerance = $_POST['tolerance'];
     $description = $_POST['description'];
-    $updatetableitem = mysqli_query($conn, "update stock set item_code = '$itemcode',item_name = '$itemname',id_item_group = '$item_group',product = '$product',sub_product = '$subproduct',grade = '$grade',main_uom = '$mainuom',sec_uom = '$secuom',is_cutting = '$check',weight = '$weight',tolerance = '$tolerance',description = '$description'");
+    $updatetableitem = mysqli_query($conn, "update stock set item_code = '$itemcode',item_name = '$itemname',id_item_group = '$itemgroup',product = '$product',sub_product = '$subproduct',grade = '$grade',main_uom = '$mainuom',sec_uom = '$secuom',is_cutting = '$check',weight = '$weight',tolerance = '$tolerance',description = '$description' where id_item='$iditem'");
     if ($updatetableitem) {
         header('location:master_item.php');
     } else {
@@ -263,7 +263,7 @@ if (isset($_POST['updateitem'])) {
 }
 //delete item
 if (isset($_POST['deleteitem'])) {
-    $iditem = $_POST['iditem'];
+    $iditem = $_POST['itemyangdidelete'];
     $deletetotableitem = mysqli_query($conn, "delete from stock where id_item = '$iditem'");
     if ($deletetotableitem) {
         header('location:master_item.php');
@@ -329,25 +329,30 @@ if (isset($_POST['btnsubmit'])) {
     $mulai = $_POST['mulai'];
     $selesai = $_POST['selesai'];
     $keterangan = $_POST['keterangan'];
-    $test = "insert into muat_eksternal(tanggal_muat,nopol,nama_supir,coy,armada,staff,operator,helper,lapor,mulai,selesai,keterangan) values('$date','$nopolmuat','$supir','$lokasi','$jenisarmadamuat','$staff','$operator','$helper','$lapor','$mulai','$selesai','$keterangan')";
-    mysqli_query($conn, $test);
-    if ($test) {
-        header('location:muat_eksternal.php');
-    } else {
-        echo 'gagal';
-    }
-}
-
-// add sj
-if(isset ($_POST['btnsubmit'])) {
     $nosj = $_POST['nomorsj'];
     $namaitem  = $_POST['namaitem'];
     $quantity = $_POST['qty'];
     $tonase = $_POST['tonase'];
-    $masuktabledetail = "insert into surat_jalan(nomor_sj,nama_item,quantity,tonase) values('$nosj','$namaitem','$quantity','$tonase')";
-    mysqli_query($conn,$masuktabledetail);
-    if($masuktabledetail) {
-        header('location : muat_eksternal.php');
+    $test = "insert into muat_eksternal(tanggal_muat,nopol,nama_supir,coy,armada,staff,operator,helper,lapor,mulai,selesai,keterangan) values('$date','$nopolmuat','$supir','$lokasi','$jenisarmadamuat','$staff','$operator','$helper','$lapor','$mulai','$selesai','$keterangan')";
+    mysqli_query($conn, $test);
+
+    $count = count($nosj);
+    for ($i = 0; $i < $count; $i++) {
+        if ($nosj[$i] != null ||  !empty($nosj[$i])) {
+            $masuktabledetail = "insert into surat_jalan(nomor_sj,nama_item,quantity,tonase) values('$nosj[$i]','$namaitem[$i]','$quantity[$i]','$tonase[$i]')"; 
+        }
+        if (mysqli_query($conn, $masuktabledetail)) {
+        } else {
+            echo "Error: " . $masuktabledetail . "<br>" . mysqli_error($conn);
+        }
+    }
+    if ($test) {
+        header('location:muat_eksternal.php');
+        } else {
+        echo 'gagal';
+    }
+    if ($SQL) {
+        header('location:muat_eksternal.php');
     } else {
         echo 'gagal';
     }
@@ -397,58 +402,66 @@ if (isset($_POST['deleteuser'])) {
     }
 }
 
+//filter date
+
+/*if (isset($_GET['from_date']) && isset($_GET['to_date'])) {
+    $from_date = $_GET['from_date'];
+    $to_date = $_GET['to_date'];
+
+    $query = "SELECT * FROM stock WHERE create_time BETWEEN '$from_date' AND '$to_date' ";
+    $query_run = mysqli_query($con, $query);
+
+    if (mysqli_num_rows($query_run) > 0) {
+        foreach ($query_run as $row) {
+            <tr>
+                <td><?= $row['id']; ?></td>
+                <td><?= $row['firstname']; ?></td>
+                <td><?= $row['lastname']; ?></td>
+            </tr>
+        }
+    } else {
+        echo "No Record Found";
+    }
+}*/
+
 //onlyone checkbox
 /*function onlyOne(checkbox) {
-    var checkboxes = document.getElementsByName('check')
-    checkboxes.forEach((item) => {
-        if (item !== checkbox) item.checked = false
-    })
+var checkboxes = document.getElementsByName('check')
+checkboxes.forEach((item) => {
+if (item !== checkbox) item.checked = false
+})
 }*/
 /*//add row table
 function addRow(tableID) {
 
-    var table = document.getElementById(tableID);
-    var rowCount = table.rows.length;
-    var row = table.insertRow(rowCount);
- 
-    var cell1 = row.insertCell(0);
-    var element1 = document.createElement("input");
-    element1.type = "checkbox";
-    element1.name="chkbox[]";
-    cell1.appendChild(element1);  
- 
-    var cell2 = row.insertCell(1);
-    var element3 = document.createElement("input");
-    element3.type = "text";
-    element3.name = "txtbox[]";
-    cell2.appendChild(element3);
- 
- 
-    var cell3 = row.insertCell(2);
-    var element2 = document.createElement("input");
-    element2.type = "text";
-    element2.name = "txtbox[]";
-    cell3.appendChild(element2);
- 
-   }*/
+var table = document.getElementById(tableID);
+var rowCount = table.rows.length;
+var row = table.insertRow(rowCount);
+
+var cell1 = row.insertCell(0);
+var element1 = document.createElement("input");
+element1.type = "checkbox";
+element1.name="chkbox[]";
+cell1.appendChild(element1);
+
+var cell2 = row.insertCell(1);
+var element3 = document.createElement("input");
+element3.type = "text";
+element3.name = "txtbox[]";
+cell2.appendChild(element3);
+
+
+var cell3 = row.insertCell(2);
+var element2 = document.createElement("input");
+element2.type = "text";
+element2.name = "txtbox[]";
+cell3.appendChild(element2);
+
+}*/
 //delete row table
 /*function deleteRow(tableID) {
-    try {
-    var table = document.getElementById(tableID);
-    var rowCount = table.rows.length;
- 
-    for(var i=0; i<rowCount; i++) {
-     var row = table.rows[i];
-     var chkbox = row.cells[0].childNodes[0];
-     if(null != chkbox && true == chkbox.checked) {
-      table.deleteRow(i);
-      rowCount--;
-      i--;
-     }
- 
- 
-    }
-    }catch(e) {
-     alert(e);
-    }
-   }*/
+try {
+var table = document.getElementById(tableID);
+var rowCount = table.rows.length;
+
+for(var i=0; i<rowCount; i++) { var row=table.rows[i]; var chkbox=row.cells[0].childNodes[0]; if(null !=chkbox && true==chkbox.checked) { table.deleteRow(i); rowCount--; i--; } } }catch(e) { alert(e); } };*/
